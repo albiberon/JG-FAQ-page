@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FAQ Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #34434b;
+            margin:unset;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .container h1 {
+            color: #363636;
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.125;
+        }
+
+        .container h1 a:hover,
+        .container h1 a:focus {
+            color: black;
+        }
+
+        .container p {
+            line-height: 1.6;
+        }
+        .faq {
+            margin: 0 auto;
+        }
+
+        .faq input {
+            border: unset;
+            width: 100%;
+            height: 60px;
+            font-size: 20px;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(52, 67, 75, .2);
+            display: block;
+            padding: 0 20px;
+            margin: 40px auto;
+            -webkit-transition: box-shadow .1s linear;
+            transition: box-shadow .1s linear;
+        }
+
+        .faq input::-webkit-input-placeholder {
+            color: #a1bdcb !important;
+        }
+
+        .faq input::-moz-placeholder {
+            color: #a1bdcb !important;
+        }
+
+        .faq input:-ms-input-placeholder {
+            color: #a1bdcb !important;
+        }
+
+        .faq input:focus {
+            box-shadow: 0px 4px 8px rgba(52, 67, 75, .4);
+        }
+
+        .faq .highlight {
+            background-color: #fffd77;
+        }
+
+        .faq>ul>li:not( :first-child) {
+            border-top: 1px solid #dcebed;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .faq>ul>li.is-hidden {
+            display: none;
+        }
+
+        .faq>ul>li h2 {
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .faq>ul>li h2:hover,
+        .faq>ul>li h2:focus,
+        .faq>ul>li.is-active h2,
+        .faq>ul>li:target h2 {
+            color: black;
+        }
+        .faq>ul>li h2::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 700;
+            content: "\f067";
+            padding-right: 10%;
+        }
+
+
+        .faq>ul>li.is-active h2::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 700;
+            content: "\f00d";
+            padding-right: 10%;
+        }
+
+
+        .faq>ul>li>div {
+            display: none;
+        }
+
+        .faq>ul>li.is-active>div,
+        .faq>ul>li:target>div {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .faq__notfound {
+            font-size: 20px;
+            font-style: italic;
+            display: none;
+            text-align: center;
+        }
+
+        .faq__notfound.is-visible {
+            display: block;
+        }
+
+        .container footer {
+            color: #a1bdcb;
+            margin-top: 40px;
+        }
+
+        .container footer a:hover,
+        .container footer a:focus {
+            color: #5594b3;
+        }
+
+
+        .sm
+{
+	width: 100%;
+	height: 2.5rem; /* 40 */
+	color: #444;
+	color: rgba( 0, 0, 0, .75 );
+	background-color: #fff;
+	background-color: rgba( 255, 255, 255, .5 );
+	overflow: hidden;
+	position: fixed;
+	z-index: 1001;
+	bottom: 0;
+	left: 0;
+	padding: 0.625rem 1.25rem 0; /* 10 20 */
+}
+	.sm--dark
+	{
+		color: #ddd;
+		color: rgba( 255, 255, 255, .75 );
+		background-color: #111;
+		background-color: rgba( 0, 0, 0, .5 );
+	}
+		.sm li
+		{
+			float: right;
+			margin-left: 1rem;
+		}
+		.sm li:first-child
+		{
+			float: left;
+			margin-left: 0;
+		}
+			.sm .googleplus-one
+			{
+				max-width: 60px;
+			}
+			.sm .twitter-follow > *:not( :first-child ),
+			.sm .twitter-share > *:not( :first-child )
+			{
+				display: none;
+			}
+
+		@media screen{ @media ( min-width: 0px ) /* everything but Internet Explorer and Safari ≤6 */
+		{
+			.sm li:last-child
+			{
+				opacity: 0;
+				-webkit-transition: opacity .25s ease-in-out;
+				transition: opacity .25s ease-in-out;
+			}
+			.sm:hover li:last-child
+			{
+				opacity: 1;
+			}	
+		}}
+
+			.sm__back
+			{
+				font-size: 0.875rem; /* 14 */
+				font-weight: bold;
+				color: currentColor;
+				text-transform: uppercase;
+				position: relative;
+			}
+				.sm__back::before
+				{
+					width: 0;
+					height: 0;
+					border: 0.313rem solid transparent; /* 5 */
+					border-left: none;
+					border-right-color: currentColor;
+					content: '';
+					display: inline-block;
+					position: relative;
+					left: 0;
+					margin-right: 0.313rem; /* 5 */
+
+					-webkit-transition: left .25s ease-in-out;
+					transition: left .25s ease-in-out;
+				}
+				.sm__back:hover::before,
+				.sm__back:focus::before
+				{
+					left: -0.313rem; /* 5 */
+				}
+                #input-container {
+    padding-top: 20px;
+    padding-right: 10%;
+    padding-left: 10%;
+    background-color: #edf8f5;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 20px;
+}
+
+.faq-list {
+    width: 80%;
+    margin: 0 auto;
+}
+
+ul.faq-list li {
+    list-style-type: none;
+}
+
+a:-webkit-any-link {
+    text-decoration: none;
+    color: unset;
+}
+a:-webkit-any-link:hover {
+    color: unset;
+}
+
+
+/*
+	RESPONSIVENESS
+*/
+
+@media screen and (max-width: 40em), screen and (max-height: 40em) /* 640 */
+{
+	.sm
+	{
+		display: none;
+	}
+}
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+
+    <div class="container" role="main">
+
+        <div class="faq">
+
+                <div id="input-container">
+                        <h1>Ask your question here</h1>
+                <input type="search" value="" placeholder="Type some keywords (e.g. delivery, payment, parts)" />
+                    </div>
+
+            <ul class="faq-list">
+                <li id="faq-01">
+                    <h2><a href="#faq-01">Great Pyramid of Giza</a></h2>
+                    <div>
+                        <p>The Great Pyramid of Giza (also known as the Pyramid of Khufu or the Pyramid of Cheops) is
+                            the oldest and largest of the three pyramids in the Giza Necropolis bordering what is now El
+                            Giza, Egypt. It is the oldest of the Seven Wonders of the Ancient World, and the only one to
+                            remain largely intact.</p>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="faq__notfound">
+                <p>No matches were found&hellip; Try &ldquo;Delivery&rdquo;.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        'use strict';
+
+        //Faq content starts
+
+        var faqContent = [  {   "id"      :  `01`,
+                                "header"  :  `Do you offer assembly service?`,
+                                "content" :  `Yes sure Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            },
+                            {   
+                                "id"      :  `02`,
+                                "header"  :  `Is it difficult to assemble a Jungle Gym Playground?`,
+                                "content" :  `No not difficult Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            },
+                            {   "id"      :  `03`,
+                                "header"  :  `Do I need to anchor my climbing frame?`,
+                                "content" :  `Anchor your frame lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            },
+                            {   "id"      :  `04`,
+                                "header"  :  `When will my order arrive?`,
+                                "content" :  `Arrives soon lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            },
+                            {   "id"      :  `05`,
+                                "header"  :  `Can I pay in installments?`,
+                                "content" :  `Sure you can pay in installments lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            }
+        ];
+        //Faq content ends
+
+        // Faq content populator
+        var htmlFaqContent = faqContent.map(function(element){
+            return `<li id="faq-${element.id}"><h2> <a href="#faq-${element.id}">${element.header}</a></h2>
+                    <div><p>${element.content}</p></div>
+                    </li>`;
+        });
+
+        $(".faq-list").html(htmlFaqContent);
+        //Faq content populator ends
+
+
+
+
+
+        // search & highlight
+
+        ; (function ($, window, document, undefined) {
+            var $container = $('.faq');
+            if (!$container.length) return true;
+
+            var $input = $container.find('input'),
+                $notfound = $container.find('.faq__notfound'),
+                $items = $container.find('> ul > li'),
+                $item = $(),
+                itemsIndexed = [];
+
+            $items.each(function () {
+                itemsIndexed.push($(this).text().replace(/\s{2,}/g, ' ').toLowerCase());
+            });
+
+            $input.on('keyup', function (e) {
+                if (e.keyCode == 13) // enter
+                {
+                    $input.trigger('blur');
+                    return true;
+                }
+
+                $items.each(function () {
+                    $item = $(this);
+                    $item.html($item.html().replace(/<span class="highlight">([^<]+)<\/span>/gi, '$1'));
+                });
+
+                var searchVal = $.trim($input.val()).toLowerCase();
+                if (searchVal.length) {
+                    for (var i in itemsIndexed) {
+                        $item = $items.eq(i);
+                        if (itemsIndexed[i].indexOf(searchVal) != -1)
+                            $item.removeClass('is-hidden').html($item.html().replace(new RegExp(searchVal + '(?!([^<]+)?>)', 'gi'), '<span class="highlight">$&</span>'));
+                        else
+                            $item.addClass('is-hidden');
+                    }
+                }
+                else $items.removeClass('is-hidden');
+
+                $notfound.toggleClass('is-visible', $items.not('.is-hidden').length == 0);
+            });
+        })(jQuery, window, document);
+
+
+        // toggling items on title press
+
+        ; (function ($, window, document, undefined) {
+            $(document).on('click', '.faq h2 a', function (e) {
+                e.preventDefault();
+                $(this).parents('li').toggleClass('is-active');
+            });
+        })(jQuery, window, document);
+
+
+        // auto-show item content when show results reduces to single
+
+        ; (function ($, window, document, undefined) {
+            var $container = $('.faq');
+            if (!$container.length) return true;
+
+            var $input = $container.find('input'),
+                $items = $container.find('> ul > li'),
+                $item = $();
+
+            $input.on('keyup', function () {
+                $item = $items.not('.is-hidden');
+                if ($item.length == 1)
+                    $item.addClass('js--autoshown is-active');
+                else
+                    $items.filter('.js--autoshown').removeClass('js--autoshown is-active');
+            });
+        })(jQuery, window, document);
+
+
+
+    </script>
+
+
+
+</body>
+
+
+
+
+
+</html>
