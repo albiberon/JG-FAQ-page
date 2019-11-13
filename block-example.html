@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FAQ Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+        body {
+            color: #4a4a4a;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            border: unset;
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+
+        .box {
+            text-align: center;
+            background: #f2f2f2;
+            color: #4a4a4a;
+            display: block;
+            padding: 1.25rem;
+        }
+
+        .code-sample {
+            background-color: #333;
+            margin-bottom: 2em;
+            border-radius: 4px;
+        }
+
+        .tab-button.is-active {
+            pointer-events: none;
+            ;
+        }
+
+        .tab-content .box {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.5s;
+        }
+
+        .tab-content.is-active .box {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        .button.is-primary.is-active,
+        .button.is-primary:active {
+            background-color: #334152;
+            color: #fff;
+        }
+
+        .button.is-primary {
+            background-color: #273443;
+            color: #fff;
+        }
+/* 
+        .button {
+            background-color: #fff;
+            color: #363636;
+            cursor: pointer;
+            justify-content: center;
+            padding-bottom: calc(.375em - 1px);
+            padding-left: .75em;
+            padding-right: .75em;
+            padding-top: calc(.375em - 1px);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .button.is-info {
+            background-color: #209cee;
+            border-color: transparent;
+            color: #fff;
+        }
+
+        .button.is-fullwidth {
+            display: flex;
+            width: 100%;
+            height: 50px;
+        }
+
+        .button.is-medium {
+            font-size: 1.25rem;
+        }
+
+
+
+        .title {
+            color: #363636;
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.125;
+        }
+
+        .title.is-1 {
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .button.is-medium {
+            font-size: 1.25rem;
+        } */
+
+        .section {
+            padding: 1rem 1.5rem;
+        }
+
+        .is-warning.is-active {
+            background-color: #f1f1f1
+        }
+
+        /* hr {
+            background-color: #f5f5f5;
+            border: none;
+            display: block;
+            height: 2px;
+            margin: 1.5rem 0;
+        } */
+
+        /* .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        } */
+
+        .faq {
+            width: 80%;
+            margin: 0 auto;
+            height: 60px;
+            font-size: 20px;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba( 52, 67, 75, .2 );
+            display: block;
+            padding: 0 20px;
+            margin-bottom: 40px;
+            -webkit-transition: box-shadow .1s linear;
+            transition: box-shadow .1s linear;
+        }
+
+        #input-container{
+            padding-top: 20px;
+            background-color: #edf8f5;
+            width: 100% ; 
+            height: 250px;
+            display: block;
+            padding-bottom: 20px;
+        }
+
+        @media screen and (min-width: 1472px) {
+            .container {
+                max-width: 1344px;
+                width: 1344px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+                //Nested
+                const nested = new HandyCollapse({
+                    nameSpace: "nested",
+                    closeOthers: false
+                });
+            },
+            false
+        );
+    </script>
+</head>
+
+<body>
+        <!-- <div id="input-container">
+                <h1 class="title is-1">Frequently Asked Questions</h1>
+                <input class="faq" type="search" value="" placeholder="Type some keywords (e.g. delivery, payment, parts)" />
+        </div> -->
+    <div class="container">
+        <!-- Nested -->     
+            <section class="section"> </section>
+            <div id="target-for-faqContent">
+            <!-- to be populated with faqContent array of objects     -->
+            </div>
+            <hr>
+            <div id="target-for-blockContent">
+                <!-- to be populated with blockContent array of objects -->
+            </div>
+            <hr>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <button type="button" class="button is-primary is-fullwidth is-medium" data-nested-control="content01">
+                <i class="fas fa-shopping-cart"></i> Product Information
+            </button>
+            <div data-nested-content="content01">
+                <div class="box">
+                    <button type="button" class="button is-info is-fullwidth is-medium" data-nested-control="child01">
+                        <i class="fas fa-times"></i> Child Content 01
+                    </button>
+                    <div data-nested-content="child01">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.<br />
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis auteirure<br />
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat<br />
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="button is-info is-fullwidth is-medium" data-nested-control="child02">
+                        <i class="fas fa-times"></i> Child Content 02
+                    </button>
+                    <div data-nested-content="child02">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.<br />
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis auteirure<br />
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat<br />
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <button type="button" class="button is-primary is-fullwidth is-medium" data-nested-control="content02">
+                <i class="fas fa-shopping-cart" ></i>Ordering & Delivery
+            </button>
+
+            <div data-nested-content="content02">
+                <div class="box">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.<br />
+                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis auteirure<br />
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecatcupidatat<br />
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br /><br />
+                    </p>
+                    <button type="button" class="button is-info is-fullwidth is-medium" data-nested-control="child03">
+                        Child Content 03
+                    </button>
+                    <div data-nested-content="child03">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.<br />
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                ea commodo consequat. Duis auteirure<br />
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat<br />
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br /><br />
+                            </p>
+                            <button type="button" class="button is-warning is-fullwidth is-medium"
+                                data-nested-control="grandChild01">
+                                GrandChild Content 01
+                            </button>
+                            <div data-nested-content="grandChild01">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+        <script>
+
+        //Faq content starts
+
+        var faqContent = [  {   "id"      :  `01`,
+                                "header"  :  `Do you offer assembly service?`,
+                                "content" :  `Yes sure Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            },
+                            {   
+                                "id"      :  `02`,
+                                "header"  :  `Is it difficult to assemble a Jungle Gym Playground?`,
+                                "content" :  `No not difficult Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            },
+                            {   "id"      :  `03`,
+                                "header"  :  `Do I need to anchor my climbing frame?`,
+                                "content" :  `Anchor your frame lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            },
+                            {   "id"      :  `04`,
+                                "header"  :  `When will my order arrive?`,
+                                "content" :  `Arrives soon lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            },
+                            {   "id"      :  `05`,
+                                "header"  :  `Can I pay in installments?`,
+                                "content" :  `Sure you can pay in installments lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt utlabore et dolore magna aliqua.`
+                            }
+        ];
+        //Faq content ends
+
+        // Faq content populator
+        var htmlFaqContent = faqContent.map(function(element){
+            return `<button type="button" class="button is-warning is-fullwidth is-medium" data-nested-control="content${element.id}"> ${element.header}</button>
+                    <div data-nested-content = "content${element.id}">
+                        <div class="box" style="background-color: #FFF;">
+                        <p>${element.content}</p>
+                        </div>
+                    </div>`;
+        });
+
+        $("#target-for-faqContent").html(htmlFaqContent);
+        //Faq content populator ends
+
+
+        // //Faq block populator
+        // var htmlFaqBlock = blockContent.map(function(element){
+        //     return `<button type="button" class="button is-primary is-fullwidth is-medium" data-nested-control="content${element.id}"> ${element.header}</button>
+        //             <div data-nested-content = "content${element.id}">
+        //                 <div class="box" style="background-color: #FFF;">
+        //                 <p>${element.content}</p>
+        //                 </div>
+        //             </div>`;
+        // });
+
+        // $("#target-for-blockContent").html(htmlFaqContent);        
+
+
+
+        //Faq Block content
+        var blockContent = [
+                            {   "id"      :  `05`,
+                                "header"  :  `Product Information`,
+                                "icon"    :   `<i class="fas fa-info-circle"></i>`,
+                                "sub-categories" :[ {"id"      :  `0501`,
+                                                     "sub-header" : "Sub header for product info 1",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    },
+                                                    {"id"      :  `0502`,
+                                                     "sub-header" : "Sub header for product info 2",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    },
+                                                    {"id"      :  `0503`,
+                                                     "sub-header" : "Sub header for product info 3",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    }
+                                                    ]
+                            },
+                            {   "id"      :  `06`,
+                                "header"  :  `Ordering & Payment`,
+                                "icon"    :   `<i class="fas fa-times"></i>`,
+                                "sub-categories" :[ {"id"      :  `0601`,
+                                                     "sub-header" : "Sub header for Ordering & Payment 1",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    },
+                                                    {"id"      :  `0602`,
+                                                     "sub-header" : "Sub header for Ordering & Payment 2",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    },
+                                                    {"id"      :  `0603`,
+                                                     "sub-header" : "Sub header for Ordering & Paymento 3",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    }
+                                                    ]
+                            },
+                            {   "id"      :  `07`,
+                                "header"  :  `Delivery`,
+                                "icon"    :   `<i class="fas fa-truck"></i>`,
+                                "sub-categories" :[ {"id"      :  `0701`,
+                                                     "sub-header" : "Sub header for delivery 1",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    },
+                                                    {"id"      :  `0702`,
+                                                     "sub-header" : "Sub header for delivery 2",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    },
+                                                    {"id"      :  `0703`,
+                                                     "sub-header" : "Sub header for delivery 3",
+                                                     "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                                     incididunt utlabore et dolore magna aliqua.`
+                                                    }
+                                                    ]
+                            }
+        ];
+
+        // Faq block content ends
+
+        // collapse script below
+        !(function(t) {
+    var e = {};
+    function i(n) {
+        if (e[n]) return e[n].exports;
+        var o = (e[n] = { i: n, l: !1, exports: {} });
+        return t[n].call(o.exports, o, o.exports, i), (o.l = !0), o.exports;
+    }
+    (i.m = t),
+        (i.c = e),
+        (i.d = function(t, e, n) {
+            i.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: n });
+        }),
+        (i.r = function(t) {
+            "undefined" != typeof Symbol &&
+                Symbol.toStringTag &&
+                Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }),
+                Object.defineProperty(t, "__esModule", { value: !0 });
+        }),
+        (i.t = function(t, e) {
+            if ((1 & e && (t = i(t)), 8 & e)) return t;
+            if (4 & e && "object" == typeof t && t && t.__esModule) return t;
+            var n = Object.create(null);
+            if (
+                (i.r(n),
+                Object.defineProperty(n, "default", { enumerable: !0, value: t }),
+                2 & e && "string" != typeof t)
+            )
+                for (var o in t)
+                    i.d(
+                        n,
+                        o,
+                        function(e) {
+                            return t[e];
+                        }.bind(null, o)
+                    );
+            return n;
+        }),
+        (i.n = function(t) {
+            var e =
+                t && t.__esModule
+                    ? function() {
+                          return t.default;
+                      }
+                    : function() {
+                          return t;
+                      };
+            return i.d(e, "a", e), e;
+        }),
+        (i.o = function(t, e) {
+            return Object.prototype.hasOwnProperty.call(t, e);
+        }),
+        (i.p = ""),
+        i((i.s = 0));
+})([
+    function(t, e, i) {
+        "use strict";
+        i.r(e);
+        var n = function() {
+                return (n =
+                    Object.assign ||
+                    function(t) {
+                        for (var e, i = 1, n = arguments.length; i < n; i++)
+                            for (var o in (e = arguments[i]))
+                                Object.prototype.hasOwnProperty.call(e, o) && (t[o] = e[o]);
+                        return t;
+                    }).apply(this, arguments);
+            },
+            o = (function() {
+                function t(t) {
+                    void 0 === t && (t = {}), (this.itemsState = {});
+                    var e = "object" == typeof t && "nameSpace" in t ? t.nameSpace : "hc",
+                        i = {
+                            nameSpace: "hc",
+                            toggleButtonAttr: "data-" + e + "-control",
+                            toggleContentAttr: "data-" + e + "-content",
+                            activeClass: "is-active",
+                            isAnimation: !0,
+                            closeOthers: !0,
+                            animationSpeed: 400,
+                            cssEasing: "ease-in-out",
+                            onSlideStart: function() {},
+                            onSlideEnd: function() {}
+                        };
+                    (this.options = n({}, i, t)),
+                        (this.toggleContentEls = document.querySelectorAll("[" + this.options.toggleContentAttr + "]")),
+                        (this.toggleButtonEls = document.querySelectorAll("[" + this.options.toggleButtonAttr + "]")),
+                        this.init();
+                }
+                return (
+                    (t.prototype.init = function() {
+                        this.toggleContentEls && this.initContentsState(this.toggleContentEls),
+                            this.toggleButtonEls.length > 0 && this.handleButtonsEvent(this.toggleButtonEls);
+                    }),
+                    (t.prototype.initContentsState = function(t) {
+                        var e = this;
+                        (this.itemsState = {}),
+                            [].slice.call(t).forEach(function(t) {
+                                (t.style.overflow = "hidden"), (t.style.maxHeight = "none");
+                                var i = t.classList.contains(e.options.activeClass),
+                                    n = t.getAttribute(e.options.toggleContentAttr);
+                                n && (e.setItemState(n, i), i ? e.open(n, !1, !1) : e.close(n, !1, !1));
+                            });
+                    }),
+                    (t.prototype.handleButtonsEvent = function(t) {
+                        var e = this;
+                        t &&
+                            0 !== t.length &&
+                            [].slice.call(t).forEach(function(t) {
+                                var i = t.getAttribute(e.options.toggleButtonAttr);
+                                i &&
+                                    t.addEventListener(
+                                        "click",
+                                        function(n) {
+                                            n.preventDefault(), e.toggleSlide(i, !!t);
+                                        },
+                                        !1
+                                    );
+                            });
+                    }),
+                    (t.prototype.setItemState = function(t, e) {
+                        this.itemsState[t] = { isOpen: e, isAnimating: !1 };
+                    }),
+                    (t.prototype.toggleSlide = function(t, e) {
+                        void 0 === e && (e = !0),
+                            this.itemsState[t].isAnimating ||
+                                (!1 === this.itemsState[t].isOpen
+                                    ? this.open(t, e, this.options.isAnimation)
+                                    : this.close(t, e, this.options.isAnimation));
+                    }),
+                    (t.prototype.open = function(t, e, i) {
+                        var n = this;
+                        if ((void 0 === e && (e = !0), void 0 === i && (i = !0), t)) {
+                            this.itemsState.hasOwnProperty(t) || this.setItemState(t, !1),
+                                (this.itemsState[t].isAnimating = !0),
+                                this.options.closeOthers &&
+                                    [].slice.call(this.toggleContentEls).forEach(function(e) {
+                                        var o = e.getAttribute(n.options.toggleContentAttr);
+                                        o && o !== t && n.close(o, !1, i);
+                                    }),
+                                !1 !== e && this.options.onSlideStart(!0, t);
+                            var o = document.querySelector("[" + this.options.toggleContentAttr + "='" + t + "']"),
+                                s = this.getTargetHeight(o);
+                            o.classList.add(this.options.activeClass);
+                            var a = document.querySelectorAll("[" + this.options.toggleButtonAttr + "='" + t + "']");
+                            a.length > 0 &&
+                                [].slice.call(a).forEach(function(t) {
+                                    t.classList.add(n.options.activeClass);
+                                }),
+                                i
+                                    ? ((o.style.overflow = "hidden"),
+                                      (o.style.transition =
+                                          this.options.animationSpeed + "ms " + this.options.cssEasing),
+                                      (o.style.maxHeight = (s || "1000") + "px"),
+                                      setTimeout(function() {
+                                          !1 !== e && n.options.onSlideEnd(!0, t),
+                                              (o.style.maxHeight = "none"),
+                                              (o.style.transition = ""),
+                                              (o.style.overflow = ""),
+                                              (n.itemsState[t].isAnimating = !1);
+                                      }, this.options.animationSpeed))
+                                    : ((o.style.maxHeight = "none"),
+                                      (o.style.overflow = ""),
+                                      (this.itemsState[t].isAnimating = !1)),
+                                (this.itemsState[t].isOpen = !0);
+                        }
+                    }),
+                    (t.prototype.close = function(t, e, i) {
+                        var n = this;
+                        if ((void 0 === e && (e = !0), void 0 === i && (i = !0), t)) {
+                            this.itemsState.hasOwnProperty(t) || this.setItemState(t, !1),
+                                (this.itemsState[t].isAnimating = !0),
+                                !1 !== e && this.options.onSlideStart(!1, t);
+                            var o = document.querySelector("[" + this.options.toggleContentAttr + "='" + t + "']");
+                            (o.style.overflow = "hidden"),
+                                o.classList.remove(this.options.activeClass),
+                                (o.style.maxHeight = o.clientHeight + "px"),
+                                setTimeout(function() {
+                                    o.style.maxHeight = "0px";
+                                }, 5);
+                            var s = document.querySelectorAll("[" + this.options.toggleButtonAttr + "='" + t + "']");
+                            s.length > 0 &&
+                                [].slice.call(s).forEach(function(t) {
+                                    t.classList.remove(n.options.activeClass);
+                                }),
+                                i
+                                    ? ((o.style.transition =
+                                          this.options.animationSpeed + "ms " + this.options.cssEasing),
+                                      setTimeout(function() {
+                                          !1 !== e && n.options.onSlideEnd(!1, t),
+                                              (o.style.transition = ""),
+                                              (n.itemsState[t].isAnimating = !1);
+                                      }, this.options.animationSpeed))
+                                    : (this.options.onSlideEnd(!1, t), (this.itemsState[t].isAnimating = !1)),
+                                this.itemsState.hasOwnProperty(t) && (this.itemsState[t].isOpen = !1);
+                        }
+                    }),
+                    (t.prototype.getTargetHeight = function(t) {
+                        if (t) {
+                            var e = t.cloneNode(!0),
+                                i = t.parentNode;
+                            if (i) {
+                                (e.style.maxHeight = "none"), (e.style.opacity = "0"), i.appendChild(e);
+                                var n = e.clientHeight;
+                                return i.removeChild(e), n;
+                            }
+                        }
+                    }),
+                    t
+                );
+            })();
+        window.HandyCollapse = o;
+    }
+]);
+// collapse script below
+
+
+        </script>
+    </div>
+
+</body>
+
+
+
+
+
+</html>
