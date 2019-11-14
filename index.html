@@ -34,6 +34,8 @@
             line-height: 1.125;
             padding-right: 10%;
             padding-left: 10%;
+            margin-top: 45px;
+            margin-bottom: 35px;
         }
 
         .container h1 a:hover,
@@ -43,6 +45,12 @@
 
         .container p {
             line-height: 1.6;
+            margin: unset;
+        }
+
+        .box p {
+            line-height: 1.6;
+            padding: 30px 10%;
         }
 
         .faq {
@@ -110,7 +118,7 @@
             font-family: "Font Awesome 5 Free";
             font-weight: 700;
             content: "\f067";
-            padding-right: 10%;
+            padding-right: 5%;
             color: #4ec425;
         }
 
@@ -119,7 +127,7 @@
             font-family: "Font Awesome 5 Free";
             font-weight: 700;
             content: "\f00d";
-            padding-right: 10%;
+            padding-right: 5%;
             color: #4ec425;
 
         }
@@ -274,11 +282,16 @@
 
         .permanent-faq-container {
             background-color: #f5f5f5;
-            height: 300px;
             margin-top: 50px;
         }
 
         .content-container {
+            max-width: 100%;
+            margin: auto;
+            padding-top: 10px;
+        }
+
+        .help-container {
             max-width: 100%;
             margin: auto;
             padding-top: 10px;
@@ -306,23 +319,29 @@
 
         .button {
             cursor: pointer;
-            justify-content: center;
             padding-bottom: calc(.375em - 1px);
-            padding-left: .75em;
-            padding-right: .75em;
+            padding-left: 12%;
+            padding-right: 12%;
             padding-top: calc(.375em - 1px);
             text-align: center;
             white-space: nowrap;
             border-right: none;
             border-top: none;
             border-left: none;
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid #3b4d63;
+        }
+
+        .button .fa, .button .far,button .fas {
+            padding-right: 3%;
+            min-width: 40px;
+            text-align: left;
         }
 
         .button.is-info {
             background-color: #edf8f5;
-            border-color: transparent;
+            border-color: #dcebed;
             color: #363636;
+            height: 80px!important;
         }
 
         .button.is-fullwidth {
@@ -333,6 +352,24 @@
 
         .button.is-medium {
             font-size: 1.25rem;
+        }
+
+        .button.is-info::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 700;
+            content: "\f067";
+            padding-right: 6%;
+        }
+
+        .button.is-info.is-active::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 700;
+            content: "\f00d";
+            padding-right: 6.3%;
+        }
+
+        .button.is-info.is-active {
+            background-color: #dcebed;
         }
 
         .title {
@@ -352,7 +389,6 @@
         }
 
         .box {
-            text-align: center;
             background: #f2f2f2;
             color: #4a4a4a;
             display: block;
@@ -382,7 +418,7 @@
 
         .button.is-primary.is-active,
         .button.is-primary:active {
-            background-color: #334152;
+            background-color: #1b242f;
             color: #fff;
         }
 
@@ -390,7 +426,30 @@
             background-color: #273443;
             color: #fff;
             height: 80px;
+            font-size: 24px;
         }
+
+        .content-container h1, .help-container h1 {
+            padding-left: 16.6%;
+        }
+
+        .help-container {
+            margin-bottom: 25px;
+        }
+
+        .button.contact-button {
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 1.1px;
+            color: #ffffff;
+            padding: 10px 35px 10px 35px;
+            border-radius: 4px;
+            background-color: #4ec425;
+            margin-left: 12.6%;
+            margin-right: 12.6%;
+            width: 66.8%;
+        }
+
     </style>
 
     <script>
@@ -428,22 +487,827 @@
             </div>
         </div>
 
-
-
         <div class="permanent-faq-container">
             <div class="content-container">
                 <h1>Answers on all topics</h1>
 
-                <div class="faqBlock-list">
+                <div id="faqBlock-list">
 
 
-                    
+
+                    <button type="button" class="button is-primary is-fullwidth is-medium"
+                        data-nested-control="content01">
+                        <i class="fas fa-info-circle"></i> Product Information
+                    </button>
+                    <div data-nested-content="content01">
+                        <div class="box">
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child01">
+                                Ground
+                            </button>
+                            <div data-nested-content="child01">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child02">
+                                Anchoring
+                            </button>
+                            <div data-nested-content="child02">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child03">
+                                Timber
+                            </button>
+                            <div data-nested-content="child03">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child04">
+                                Accessories & Spare Parts
+                            </button>
+                            <div data-nested-content="child04">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="button" class="button is-primary is-fullwidth is-medium"
+                        data-nested-control="content02">
+                        <i class="fas fa-shopping-cart"></i>Ordering & Payment
+                    </button>
+
+                    <div data-nested-content="content02">
+                        <div class="box">
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child05">
+                                How do I place an order?
+                            </button>
+                            <div data-nested-content="child05">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child06">
+                                What are the accepted payment methods?
+                            </button>
+                            <div data-nested-content="child06">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child07">
+                                Do you offer the option to pay in several installments?
+                            </button>
+                            <div data-nested-content="child07">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child08">
+                                Will I have to pay for tax?
+                            </button>
+                            <div data-nested-content="child08">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child09">
+                                I didn't receive an order confirmation email.
+                            </button>
+                            <div data-nested-content="child09">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child10">
+                                How do I change my order?
+                            </button>
+                            <div data-nested-content="child10">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child11">
+                                How do I cancel my order?
+                            </button>
+                            <div data-nested-content="child11">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="button" class="button is-primary is-fullwidth is-medium"
+                        data-nested-control="content03">
+                        <i class="fas fa-truck"></i></i>Delivery
+                    </button>
+
+                    <div data-nested-content="content03">
+                        <div class="box">
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0301">
+                                How do I place an order?
+                            </button>
+                            <div data-nested-content="child0301">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0302">
+                                What are the accepted payment methods?
+                            </button>
+                            <div data-nested-content="child0302">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0303">
+                                Do you offer the option to pay in several installments?
+                            </button>
+                            <div data-nested-content="child0303">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0304">
+                                Will I have to pay for tax?
+                            </button>
+                            <div data-nested-content="child0304">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0305">
+                                I didn't receive an order confirmation email.
+                            </button>
+                            <div data-nested-content="child0305">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0306">
+                                How do I change my order?
+                            </button>
+                            <div data-nested-content="child0306">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0307">
+                                How do I cancel my order?
+                            </button>
+                            <div data-nested-content="child0307">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="button" class="button is-primary is-fullwidth is-medium"
+                        data-nested-control="content05">
+                        <i class="fas fa-wrench"></i>Assembly
+                    </button>
+
+                    <div data-nested-content="content05">
+                        <div class="box">
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0501">
+                                How do I place an order?
+                            </button>
+                            <div data-nested-content="child0501">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0502">
+                                What are the accepted payment methods?
+                            </button>
+                            <div data-nested-content="child0502">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0503">
+                                Do you offer the option to pay in several installments?
+                            </button>
+                            <div data-nested-content="child0503">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0504">
+                                Will I have to pay for tax?
+                            </button>
+                            <div data-nested-content="child0504">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0505">
+                                I didn't receive an order confirmation email.
+                            </button>
+                            <div data-nested-content="child0505">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0506">
+                                How do I change my order?
+                            </button>
+                            <div data-nested-content="child0506">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0507">
+                                How do I cancel my order?
+                            </button>
+                            <div data-nested-content="child0507">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="button" class="button is-primary is-fullwidth is-medium"
+                        data-nested-control="content06">
+                        <i class="fas fa-undo-alt"></i>Right of withdrawal
+                    </button>
+
+                    <div data-nested-content="content06">
+                        <div class="box">
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0601">
+                                How do I place an order?
+                            </button>
+                            <div data-nested-content="child0601">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0602">
+                                What are the accepted payment methods?
+                            </button>
+                            <div data-nested-content="child0602">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0603">
+                                Do you offer the option to pay in several installments?
+                            </button>
+                            <div data-nested-content="child0603">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0604">
+                                Will I have to pay for tax?
+                            </button>
+                            <div data-nested-content="child0604">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0605">
+                                I didn't receive an order confirmation email.
+                            </button>
+                            <div data-nested-content="child0605">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0606">
+                                How do I change my order?
+                            </button>
+                            <div data-nested-content="child0606">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0607">
+                                How do I cancel my order?
+                            </button>
+                            <div data-nested-content="child0607">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="button" class="button is-primary is-fullwidth is-medium"
+                        data-nested-control="content07">
+                        <i class="fas fa-check-circle"></i>Warranty
+                    </button>
+
+                    <div data-nested-content="content07">
+                        <div class="box">
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0701">
+                                How do I place an order?
+                            </button>
+                            <div data-nested-content="child0701">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0702">
+                                What are the accepted payment methods?
+                            </button>
+                            <div data-nested-content="child0702">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0703">
+                                Do you offer the option to pay in several installments?
+                            </button>
+                            <div data-nested-content="child0703">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0704">
+                                Will I have to pay for tax?
+                            </button>
+                            <div data-nested-content="child0704">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0705">
+                                I didn't receive an order confirmation email.
+                            </button>
+                            <div data-nested-content="child0705">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0706">
+                                How do I change my order?
+                            </button>
+                            <div data-nested-content="child0706">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="button" class="button is-info is-fullwidth is-medium"
+                                data-nested-control="child0707">
+                                How do I cancel my order?
+                            </button>
+                            <div data-nested-content="child0707">
+                                <div class="box" style="background-color:#FFF">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua.<br />
+                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex
+                                        ea commodo consequat. Duis auteirure<br />
+                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur. Excepteur sint occaecatcupidatat<br />
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                        laborum.<br /><br />
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
                 </div>
 
             </div>
         </div>
 
-
+        <div class="help-container">
+                <h1>Need more help?</h1>
+                <button class="button contact-button">Contact Us</button>
+        </div>
 
 
 
@@ -577,18 +1441,12 @@
         ];
 
         // Faq block populator
+        // var blockContent = blockContent.map(function (content) {   
+        //     return '<button type="button" class="button is-primary is-fullwidth is-medium" data-nested-control="content' + content.id + '">' + content.icon + content.header + '</button>';
+        // });
+        // $("#faqBlock_list").append(blockContent);
 
-        var htmlFaqBlockContent = faqBlockContent.map(function (content) {
-            return  `<button type="button" class="button is-primary is-fullwidth is-medium"
-            data-nested-control="content${content.id}"> ${content.icon}${content.header}</button>
-            <div data-nested-content="content${content.id}">
-                
-
-
-            </div>`
-        });
-
-        $(".faqBlock-list").html(htmlFaqBlockConten);
+        // $("#faqBlock-list").append(htmlFaqBlockContent);
         //Faq content populator ends
 
         // search & highlight script
