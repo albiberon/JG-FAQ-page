@@ -114,13 +114,25 @@
             color: black;
         }
 
-        .faq>ul>li h2::before {
+        .faq-detail-button::before {
             font-family: "Font Awesome 5 Free";
             font-weight: 700;
             content: "\f067";
             padding-right: 5%;
             color: #4ec425;
         }
+
+        .closebutton-added::before{
+            content: "\f00d"!important;
+        }
+
+        /* .faq>ul>li h2::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 700;
+            content: "\f067";
+            padding-right: 5%;
+            color: #4ec425;
+        } */
 
 
         .faq>ul>li.is-active h2::before {
@@ -1357,13 +1369,21 @@
 
         // Faq content populator
         var htmlFaqContent = faqContent.map(function (element) {
-            return `<li id="faq-${element.id}"><h2> <a href="#faq-${element.id}">${element.header}</a></h2>
+            return `<li id="faq-${element.id}"><h2> <a class="faq-detail-button" href="#faq-${element.id}">${element.header}</a></h2>
                     <div><p>${element.content}</p></div>
                     </li>`;
         });
 
         $(".faq-list").html(htmlFaqContent);
         //Faq content populator ends
+
+
+        $(".faq-detail-button").click(function(){
+            if($(".faq-detail-button").hasClass("closebutton-added")){
+                $(".faq-detail-button").removeClass("closebutton-added");
+            }
+            $(this).toggleClass("closebutton-added");
+        });
 
         //Faq Block content
         var blockContent = [
