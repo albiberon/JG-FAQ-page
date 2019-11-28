@@ -16,6 +16,8 @@
 
 
     <style>
+        @font-face{font-family:Luma-Icons;src:url(/fonts/Luma-Icons.woff2)}
+
         body {
             font-family: 'Open Sans', sans-serif;
             color: #34434b;
@@ -71,8 +73,16 @@
             transition: box-shadow .1s linear;
         }
 
+        input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+        input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration { display: none; }
+
         .faq input::-webkit-input-placeholder {
             color: #a1bdcb !important;
+
         }
 
         .faq input::-moz-placeholder {
@@ -115,15 +125,15 @@
         }
 
         .faq-detail-button::before {
-            font-family: "Font Awesome 5 Free";
+            font-family: "luma-icons";
             font-weight: 700;
-            content: "\f067";
+            content: "\e622";
             padding-right: 5%;
             color: #4ec425;
         }
 
         .closebutton-added::before{
-            content: "\f00d"!important;
+            content: "\e621"!important;
         }
 
         /* .faq>ul>li h2::before {
@@ -166,10 +176,10 @@
             display: block;
         }
 
-        .sm {
+        /* .sm {
             width: 100%;
             height: 2.5rem;
-            /* 40 */
+
             color: #444;
             color: rgba(0, 0, 0, .75);
             background-color: #fff;
@@ -180,8 +190,8 @@
             bottom: 0;
             left: 0;
             padding: 0.625rem 1.25rem 0;
-            /* 10 20 */
-        }
+
+        } */
 
         .sm--dark {
             color: #ddd;
@@ -349,11 +359,12 @@
             text-align: left;
         }
 
-        .button.is-info {
+        .button.child-opener {
             background-color: #edf8f5;
             border-color: #dcebed;
             color: #363636;
             height: 80px!important;
+            font-size: 1.25rem;
         }
 
         .button.is-fullwidth {
@@ -362,22 +373,15 @@
             height: 50px;
         }
 
-        .button.is-medium {
-            font-size: 1.25rem;
+        button.button.child-opener::before {
+            font-family: "luma-icons";
+            font-weight: 500;
+            content: "\e622";
+            margin-right: 3%;
         }
 
-        .button.is-info::before {
-            font-family: "Font Awesome 5 Free";
-            font-weight: 700;
-            content: "\f067";
-            padding-right: 6%;
-        }
-
-        .button.is-info.is-active::before {
-            font-family: "Font Awesome 5 Free";
-            font-weight: 700;
-            content: "\f00d";
-            padding-right: 6.3%;
+        button.button.child-opener.is-active::before {
+            content: "\e621";
         }
 
         .button.is-info.is-active {
@@ -396,7 +400,7 @@
             text-align: center;
         }
 
-        .button.is-medium {
+        .child-opener {
             font-size: 1.25rem;
         }
 
@@ -434,6 +438,16 @@
             color: #fff;
         }
 
+        .button.is-primary.is-active::after {
+            font-family: "luma-icons";
+            font-weight: 400;
+            content: "\e616";
+            position:absolute;
+            right: 15%;
+            color: #fff;
+            z-index: 999;
+        }
+
         .button.is-primary {
             background-color: #273443;
             color: #fff;
@@ -462,9 +476,13 @@
             width: 66.8%;
         }
 
+        .hidden {
+            display: none;
+        }
+
     </style>
 
-    <script>
+    <!-- <script>
         document.addEventListener(
             "DOMContentLoaded",
             () => {
@@ -476,7 +494,7 @@
             },
             false
         );
-    </script>
+    </script> -->
 
 </head>
 
@@ -505,19 +523,17 @@
 
                 <div id="faqBlock-list">
 
-
-
                     <button type="button" class="button is-primary is-fullwidth is-medium"
                         data-nested-control="content01">
-                        <i class="fas fa-info-circle"></i> Product Information
+                        <i class="fas fa-info-circle"></i> Product Information 
                     </button>
-                    <div data-nested-content="content01">
+                    <div data-nested-content="content01" class="collapsible-content hidden">
                         <div class="box">
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child01">
                                 Ground
                             </button>
-                            <div data-nested-content="child01">
+                            <div data-nested-content="child01" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -531,11 +547,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child02">
                                 Anchoring
                             </button>
-                            <div data-nested-content="child02">
+                            <div data-nested-content="child02" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -549,11 +565,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child03">
                                 Timber
                             </button>
-                            <div data-nested-content="child03">
+                            <div data-nested-content="child03" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -567,11 +583,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
-                                data-nested-control="child04">
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
+                                data-nested-control="child04" >
                                 Accessories & Spare Parts
                             </button>
-                            <div data-nested-content="child04">
+                            <div data-nested-content="child04" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -594,13 +610,13 @@
                         <i class="fas fa-shopping-cart"></i>Ordering & Payment
                     </button>
 
-                    <div data-nested-content="content02">
+                    <div data-nested-content="content02" class="collapsible-content hidden">
                         <div class="box">
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child05">
                                 How do I place an order?
                             </button>
-                            <div data-nested-content="child05">
+                            <div data-nested-content="child05" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -615,11 +631,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child06">
                                 What are the accepted payment methods?
                             </button>
-                            <div data-nested-content="child06">
+                            <div data-nested-content="child06" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -634,11 +650,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child07">
                                 Do you offer the option to pay in several installments?
                             </button>
-                            <div data-nested-content="child07">
+                            <div data-nested-content="child07" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -653,11 +669,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child08">
                                 Will I have to pay for tax?
                             </button>
-                            <div data-nested-content="child08">
+                            <div data-nested-content="child08" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -672,11 +688,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child09">
                                 I didn't receive an order confirmation email.
                             </button>
-                            <div data-nested-content="child09">
+                            <div data-nested-content="child09" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -691,11 +707,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child10">
                                 How do I change my order?
                             </button>
-                            <div data-nested-content="child10">
+                            <div data-nested-content="child10" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -710,11 +726,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child11">
                                 How do I cancel my order?
                             </button>
-                            <div data-nested-content="child11">
+                            <div data-nested-content="child11" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -738,13 +754,13 @@
                         <i class="fas fa-truck"></i></i>Delivery
                     </button>
 
-                    <div data-nested-content="content03">
+                    <div data-nested-content="content03" class="collapsible-content hidden">
                         <div class="box">
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0301">
                                 How do I place an order?
                             </button>
-                            <div data-nested-content="child0301">
+                            <div data-nested-content="child0301" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -759,11 +775,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0302">
                                 What are the accepted payment methods?
                             </button>
-                            <div data-nested-content="child0302">
+                            <div data-nested-content="child0302" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -778,11 +794,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0303">
                                 Do you offer the option to pay in several installments?
                             </button>
-                            <div data-nested-content="child0303">
+                            <div data-nested-content="child0303" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -797,11 +813,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0304">
                                 Will I have to pay for tax?
                             </button>
-                            <div data-nested-content="child0304">
+                            <div data-nested-content="child0304" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -816,11 +832,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0305">
                                 I didn't receive an order confirmation email.
                             </button>
-                            <div data-nested-content="child0305">
+                            <div data-nested-content="child0305" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -835,11 +851,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0306">
                                 How do I change my order?
                             </button>
-                            <div data-nested-content="child0306">
+                            <div data-nested-content="child0306" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -854,11 +870,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium  child-opener"
                                 data-nested-control="child0307">
                                 How do I cancel my order?
                             </button>
-                            <div data-nested-content="child0307">
+                            <div data-nested-content="child0307" class="collapsible-sub-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -882,13 +898,13 @@
                         <i class="fas fa-wrench"></i>Assembly
                     </button>
 
-                    <div data-nested-content="content05">
+                    <div data-nested-content="content05" class="collapsible-content hidden">
                         <div class="box">
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0501">
                                 How do I place an order?
                             </button>
-                            <div data-nested-content="child0501">
+                            <div data-nested-content="child0501" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -903,11 +919,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0502">
                                 What are the accepted payment methods?
                             </button>
-                            <div data-nested-content="child0502">
+                            <div data-nested-content="child0502" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -922,11 +938,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0503">
                                 Do you offer the option to pay in several installments?
                             </button>
-                            <div data-nested-content="child0503">
+                            <div data-nested-content="child0503" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -941,11 +957,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0504">
                                 Will I have to pay for tax?
                             </button>
-                            <div data-nested-content="child0504">
+                            <div data-nested-content="child0504" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -960,11 +976,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0505">
                                 I didn't receive an order confirmation email.
                             </button>
-                            <div data-nested-content="child0505">
+                            <div data-nested-content="child0505" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -979,11 +995,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0506">
                                 How do I change my order?
                             </button>
-                            <div data-nested-content="child0506">
+                            <div data-nested-content="child0506" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -998,11 +1014,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0507">
                                 How do I cancel my order?
                             </button>
-                            <div data-nested-content="child0507">
+                            <div data-nested-content="child0507" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1026,13 +1042,13 @@
                         <i class="fas fa-undo-alt"></i>Right of withdrawal
                     </button>
 
-                    <div data-nested-content="content06">
+                    <div data-nested-content="content06" class="collapsible-content hidden">
                         <div class="box">
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0601">
                                 How do I place an order?
                             </button>
-                            <div data-nested-content="child0601">
+                            <div data-nested-content="child0601" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1047,11 +1063,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0602">
                                 What are the accepted payment methods?
                             </button>
-                            <div data-nested-content="child0602">
+                            <div data-nested-content="child0602" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1066,11 +1082,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0603">
                                 Do you offer the option to pay in several installments?
                             </button>
-                            <div data-nested-content="child0603">
+                            <div data-nested-content="child0603" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1085,11 +1101,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0604">
                                 Will I have to pay for tax?
                             </button>
-                            <div data-nested-content="child0604">
+                            <div data-nested-content="child0604" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1104,11 +1120,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0605">
                                 I didn't receive an order confirmation email.
                             </button>
-                            <div data-nested-content="child0605">
+                            <div data-nested-content="child0605" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1123,11 +1139,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0606">
                                 How do I change my order?
                             </button>
-                            <div data-nested-content="child0606">
+                            <div data-nested-content="child0606" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1142,11 +1158,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0607">
                                 How do I cancel my order?
                             </button>
-                            <div data-nested-content="child0607">
+                            <div data-nested-content="child0607" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1170,9 +1186,9 @@
                         <i class="fas fa-check-circle"></i>Warranty
                     </button>
 
-                    <div data-nested-content="content07">
+                    <div data-nested-content="content07" class="collapsible-content hidden">
                         <div class="box">
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0701">
                                 How do I place an order?
                             </button>
@@ -1191,11 +1207,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0702">
                                 What are the accepted payment methods?
                             </button>
-                            <div data-nested-content="child0702">
+                            <div data-nested-content="child0702" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1210,11 +1226,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0703">
                                 Do you offer the option to pay in several installments?
                             </button>
-                            <div data-nested-content="child0703">
+                            <div data-nested-content="child0703" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1229,11 +1245,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0704">
                                 Will I have to pay for tax?
                             </button>
-                            <div data-nested-content="child0704">
+                            <div data-nested-content="child0704" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1248,11 +1264,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0705">
                                 I didn't receive an order confirmation email.
                             </button>
-                            <div data-nested-content="child0705">
+                            <div data-nested-content="child0705" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1267,11 +1283,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0706">
                                 How do I change my order?
                             </button>
-                            <div data-nested-content="child0706">
+                            <div data-nested-content="child0706" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1286,11 +1302,11 @@
                                     </p>
                                 </div>
                             </div>
-                            <button type="button" class="button is-info is-fullwidth is-medium"
+                            <button type="button" class="button is-info is-fullwidth is-medium child-opener"
                                 data-nested-control="child0707">
                                 How do I cancel my order?
                             </button>
-                            <div data-nested-content="child0707">
+                            <div data-nested-content="child0707" class="collapsible-content hidden">
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1385,80 +1401,82 @@
             $(this).toggleClass("closebutton-added");
         });
 
+        
+
         //Faq Block content
-        var blockContent = [
-            {
-                "id": `06`,
-                "header": `Product Information`,
-                "icon": `<i class="fas fa-info-circle"></i>`,
-                "sub-categories": [{
-                    "id": `0601`,
-                    "sub-header": "Sub header for product info 1",
-                    "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                },
-                {
-                    "id": `0602`,
-                    "sub-header": "Sub header for product info 2",
-                    "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                },
-                {
-                    "id": `0603`,
-                    "sub-header": "Sub header for product info 3",
-                    "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                }]
-            },
-            {
-                "id": `07`,
-                "header": `Ordering & Payment`,
-                "icon": `<i class="fas fa-times"></i>`,
-                "sub-categories": [{
-                    "id": `0701`,
-                    "sub-header": "Sub header for Ordering & Payment 1",
-                    "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                },
-                {
-                    "id": `0702`,
-                    "sub-header": "Sub header for Ordering & Payment 2",
-                    "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                },
-                {
-                    "id": `0703`,
-                    "sub-header": "Sub header for Ordering & Paymento 3",
-                    "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                }
-                ]
-            },
-            {
-                "id": `08`,
-                "header": `Delivery`,
-                "icon": `<i class="fas fa-truck"></i>`,
-                "sub-categories": [{
-                    "id": `0801`,
-                    "sub-header": "Sub header for delivery 1",
-                    "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                },
-                {
-                    "id": `0802`,
-                    "sub-header": "Sub header for delivery 2",
-                    "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                },
-                {
-                    "id": `0803`,
-                    "header": "Sub header for delivery 3",
-                    "content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                                                     incididunt utlabore et dolore magna aliqua.`
-                }
-                ]
-            }
-        ];
+        // var blockContent = [
+        //     {
+        //         "id": `06`,
+        //         "header": `Product Information`,
+        //         "icon": `<i class="fas fa-info-circle"></i>`,
+        //         "sub-categories": [{
+        //             "id": `0601`,
+        //             "sub-header": "Sub header for product info 1",
+        //             "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         },
+        //         {
+        //             "id": `0602`,
+        //             "sub-header": "Sub header for product info 2",
+        //             "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         },
+        //         {
+        //             "id": `0603`,
+        //             "sub-header": "Sub header for product info 3",
+        //             "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         }]
+        //     },
+        //     {
+        //         "id": `07`,
+        //         "header": `Ordering & Payment`,
+        //         "icon": `<i class="fas fa-times"></i>`,
+        //         "sub-categories": [{
+        //             "id": `0701`,
+        //             "sub-header": "Sub header for Ordering & Payment 1",
+        //             "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         },
+        //         {
+        //             "id": `0702`,
+        //             "sub-header": "Sub header for Ordering & Payment 2",
+        //             "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         },
+        //         {
+        //             "id": `0703`,
+        //             "sub-header": "Sub header for Ordering & Paymento 3",
+        //             "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         }
+        //         ]
+        //     },
+        //     {
+        //         "id": `08`,
+        //         "header": `Delivery`,
+        //         "icon": `<i class="fas fa-truck"></i>`,
+        //         "sub-categories": [{
+        //             "id": `0801`,
+        //             "sub-header": "Sub header for delivery 1",
+        //             "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         },
+        //         {
+        //             "id": `0802`,
+        //             "sub-header": "Sub header for delivery 2",
+        //             "sub-content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         },
+        //         {
+        //             "id": `0803`,
+        //             "header": "Sub header for delivery 3",
+        //             "content": `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        //                                                              incididunt utlabore et dolore magna aliqua.`
+        //         }
+        //         ]
+        //     }
+        // ];
 
         // Faq block populator
         // var blockContent = blockContent.map(function (content) {   
@@ -1469,11 +1487,55 @@
         // $("#faqBlock-list").append(htmlFaqBlockContent);
         //Faq content populator ends
 
+        //On click children of the main button appears
+
+        $("button.is-primary").click(function(){
+
+            if(!$(this).hasClass("is-active")){
+                $("button.is-primary").each(function(){
+                $(this).removeClass("is-active");
+            });
+            $(".collapsible-content").each(function(){
+                $(this).addClass("hidden");
+            });
+            $(this).addClass("is-active");
+            $(this).next().toggleClass("hidden");
+            } else {
+                $(this).removeClass("is-active");
+                $(this).next().addClass("hidden");
+            }
+
+         
+        });
+
+        $("button.child-opener").click(function(){
+            $("button.child-opener").each(function(){$(this).removeClass("is-active");});
+            $("button.child-opener").siblings($(".collapsible-content")).each(function(){
+                $(this).addClass("hidden");
+            });
+            $(this).toggleClass("is-active");
+            $(this).next().toggleClass("hidden");
+        });
+
+        // if ($(".button.is-primary.is-fullwidth.is-medium").hasClass("is-active")){
+        //     $(this).on(click, function(){
+        //         $(this).next().addClass("hidden");
+        //     });
+        // };
+        $(".button.is-primary.is-fullwidth.is-medium.is-active").click(function(){
+            $(this).next().toggleClass("hidden");
+            $(this).removeClass("is-active");
+        });
+
+        
+
+
+
         // search & highlight script
         !function (s) { var e = s(".faq"); if (!e.length) return; var t = e.find("input"), a = e.find(".faq__notfound"), l = e.find("> ul > li"), h = s(), r = []; l.each(function () { r.push(s(this).text().replace(/\s{2,}/g, " ").toLowerCase()) }), t.on("keyup", function (e) { if (13 == e.keyCode) return t.trigger("blur"), !0; l.each(function () { (h = s(this)).html(h.html().replace(/<span class="highlight">([^<]+)<\/span>/gi, "$1")) }); var i = s.trim(t.val()).toLowerCase(); if (i.length) for (var n in r) h = l.eq(n), -1 != r[n].indexOf(i) ? h.removeClass("is-hidden").html(h.html().replace(new RegExp(i + "(?!([^<]+)?>)", "gi"), '<span class="highlight">$&</span>')) : h.addClass("is-hidden"); else l.removeClass("is-hidden"); a.toggleClass("is-visible", 0 == l.not(".is-hidden").length) }) }(jQuery, window, document);
 
         // toggling items on title press
-        !function (i) { var n = {}; function o(t) { if (n[t]) return n[t].exports; var e = n[t] = { i: t, l: !1, exports: {} }; return i[t].call(e.exports, e, e.exports, o), e.l = !0, e.exports } o.m = i, o.c = n, o.d = function (t, e, i) { o.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: i }) }, o.r = function (t) { "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t, "__esModule", { value: !0 }) }, o.t = function (e, t) { if (1 & t && (e = o(e)), 8 & t) return e; if (4 & t && "object" == typeof e && e && e.__esModule) return e; var i = Object.create(null); if (o.r(i), Object.defineProperty(i, "default", { enumerable: !0, value: e }), 2 & t && "string" != typeof e) for (var n in e) o.d(i, n, function (t) { return e[t] }.bind(null, n)); return i }, o.n = function (t) { var e = t && t.__esModule ? function () { return t.default } : function () { return t }; return o.d(e, "a", e), e }, o.o = function (t, e) { return Object.prototype.hasOwnProperty.call(t, e) }, o.p = "", o(o.s = 0) }([function (t, e, i) { "use strict"; i.r(e); var n = function () { return (n = Object.assign || function (t) { for (var e, i = 1, n = arguments.length; i < n; i++)for (var o in e = arguments[i]) Object.prototype.hasOwnProperty.call(e, o) && (t[o] = e[o]); return t }).apply(this, arguments) }, o = (s.prototype.init = function () { this.toggleContentEls && this.initContentsState(this.toggleContentEls), 0 < this.toggleButtonEls.length && this.handleButtonsEvent(this.toggleButtonEls) }, s.prototype.initContentsState = function (t) { var n = this; this.itemsState = {}, [].slice.call(t).forEach(function (t) { t.style.overflow = "hidden", t.style.maxHeight = "none"; var e = t.classList.contains(n.options.activeClass), i = t.getAttribute(n.options.toggleContentAttr); i && (n.setItemState(i, e), e ? n.open(i, !1, !1) : n.close(i, !1, !1)) }) }, s.prototype.handleButtonsEvent = function (t) { var n = this; t && 0 !== t.length && [].slice.call(t).forEach(function (e) { var i = e.getAttribute(n.options.toggleButtonAttr); i && e.addEventListener("click", function (t) { t.preventDefault(), n.toggleSlide(i, !!e) }, !1) }) }, s.prototype.setItemState = function (t, e) { this.itemsState[t] = { isOpen: e, isAnimating: !1 } }, s.prototype.toggleSlide = function (t, e) { void 0 === e && (e = !0), this.itemsState[t].isAnimating || (!1 === this.itemsState[t].isOpen ? this.open(t, e, this.options.isAnimation) : this.close(t, e, this.options.isAnimation)) }, s.prototype.open = function (i, t, n) { var o = this; if (void 0 === t && (t = !0), void 0 === n && (n = !0), i) { this.itemsState.hasOwnProperty(i) || this.setItemState(i, !1), this.itemsState[i].isAnimating = !0, this.options.closeOthers && [].slice.call(this.toggleContentEls).forEach(function (t) { var e = t.getAttribute(o.options.toggleContentAttr); e && e !== i && o.close(e, !1, n) }), !1 !== t && this.options.onSlideStart(!0, i); var e = document.querySelector("[" + this.options.toggleContentAttr + "='" + i + "']"), s = this.getTargetHeight(e); e.classList.add(this.options.activeClass); var a = document.querySelectorAll("[" + this.options.toggleButtonAttr + "='" + i + "']"); 0 < a.length && [].slice.call(a).forEach(function (t) { t.classList.add(o.options.activeClass) }), n ? (e.style.overflow = "hidden", e.style.transition = this.options.animationSpeed + "ms " + this.options.cssEasing, e.style.maxHeight = (s || "1000") + "px", setTimeout(function () { !1 !== t && o.options.onSlideEnd(!0, i), e.style.maxHeight = "none", e.style.transition = "", e.style.overflow = "", o.itemsState[i].isAnimating = !1 }, this.options.animationSpeed)) : (e.style.maxHeight = "none", e.style.overflow = "", this.itemsState[i].isAnimating = !1), this.itemsState[i].isOpen = !0 } }, s.prototype.close = function (t, e, i) { var n = this; if (void 0 === e && (e = !0), void 0 === i && (i = !0), t) { this.itemsState.hasOwnProperty(t) || this.setItemState(t, !1), !(this.itemsState[t].isAnimating = !0) !== e && this.options.onSlideStart(!1, t); var o = document.querySelector("[" + this.options.toggleContentAttr + "='" + t + "']"); o.style.overflow = "hidden", o.classList.remove(this.options.activeClass), o.style.maxHeight = o.clientHeight + "px", setTimeout(function () { o.style.maxHeight = "0px" }, 5); var s = document.querySelectorAll("[" + this.options.toggleButtonAttr + "='" + t + "']"); 0 < s.length && [].slice.call(s).forEach(function (t) { t.classList.remove(n.options.activeClass) }), i ? (o.style.transition = this.options.animationSpeed + "ms " + this.options.cssEasing, setTimeout(function () { !1 !== e && n.options.onSlideEnd(!1, t), o.style.transition = "", n.itemsState[t].isAnimating = !1 }, this.options.animationSpeed)) : (this.options.onSlideEnd(!1, t), this.itemsState[t].isAnimating = !1), this.itemsState.hasOwnProperty(t) && (this.itemsState[t].isOpen = !1) } }, s.prototype.getTargetHeight = function (t) { if (t) { var e = t.cloneNode(!0), i = t.parentNode; if (i) { e.style.maxHeight = "none", e.style.opacity = "0", i.appendChild(e); var n = e.clientHeight; return i.removeChild(e), n } } }, s); function s(t) { void 0 === t && (t = {}), this.itemsState = {}; var e = "object" == typeof t && "nameSpace" in t ? t.nameSpace : "hc", i = { nameSpace: "hc", toggleButtonAttr: "data-" + e + "-control", toggleContentAttr: "data-" + e + "-content", activeClass: "is-active", isAnimation: !0, closeOthers: !0, animationSpeed: 400, cssEasing: "ease-in-out", onSlideStart: function () { }, onSlideEnd: function () { } }; this.options = n({}, i, t), this.toggleContentEls = document.querySelectorAll("[" + this.options.toggleContentAttr + "]"), this.toggleButtonEls = document.querySelectorAll("[" + this.options.toggleButtonAttr + "]"), this.init() } window.HandyCollapse = o; }]);
+        // !function (i) { var n = {}; function o(t) { if (n[t]) return n[t].exports; var e = n[t] = { i: t, l: !1, exports: {} }; return i[t].call(e.exports, e, e.exports, o), e.l = !0, e.exports } o.m = i, o.c = n, o.d = function (t, e, i) { o.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: i }) }, o.r = function (t) { "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t, "__esModule", { value: !0 }) }, o.t = function (e, t) { if (1 & t && (e = o(e)), 8 & t) return e; if (4 & t && "object" == typeof e && e && e.__esModule) return e; var i = Object.create(null); if (o.r(i), Object.defineProperty(i, "default", { enumerable: !0, value: e }), 2 & t && "string" != typeof e) for (var n in e) o.d(i, n, function (t) { return e[t] }.bind(null, n)); return i }, o.n = function (t) { var e = t && t.__esModule ? function () { return t.default } : function () { return t }; return o.d(e, "a", e), e }, o.o = function (t, e) { return Object.prototype.hasOwnProperty.call(t, e) }, o.p = "", o(o.s = 0) }([function (t, e, i) { "use strict"; i.r(e); var n = function () { return (n = Object.assign || function (t) { for (var e, i = 1, n = arguments.length; i < n; i++)for (var o in e = arguments[i]) Object.prototype.hasOwnProperty.call(e, o) && (t[o] = e[o]); return t }).apply(this, arguments) }, o = (s.prototype.init = function () { this.toggleContentEls && this.initContentsState(this.toggleContentEls), 0 < this.toggleButtonEls.length && this.handleButtonsEvent(this.toggleButtonEls) }, s.prototype.initContentsState = function (t) { var n = this; this.itemsState = {}, [].slice.call(t).forEach(function (t) { t.style.overflow = "hidden", t.style.maxHeight = "none"; var e = t.classList.contains(n.options.activeClass), i = t.getAttribute(n.options.toggleContentAttr); i && (n.setItemState(i, e), e ? n.open(i, !1, !1) : n.close(i, !1, !1)) }) }, s.prototype.handleButtonsEvent = function (t) { var n = this; t && 0 !== t.length && [].slice.call(t).forEach(function (e) { var i = e.getAttribute(n.options.toggleButtonAttr); i && e.addEventListener("click", function (t) { t.preventDefault(), n.toggleSlide(i, !!e) }, !1) }) }, s.prototype.setItemState = function (t, e) { this.itemsState[t] = { isOpen: e, isAnimating: !1 } }, s.prototype.toggleSlide = function (t, e) { void 0 === e && (e = !0), this.itemsState[t].isAnimating || (!1 === this.itemsState[t].isOpen ? this.open(t, e, this.options.isAnimation) : this.close(t, e, this.options.isAnimation)) }, s.prototype.open = function (i, t, n) { var o = this; if (void 0 === t && (t = !0), void 0 === n && (n = !0), i) { this.itemsState.hasOwnProperty(i) || this.setItemState(i, !1), this.itemsState[i].isAnimating = !0, this.options.closeOthers && [].slice.call(this.toggleContentEls).forEach(function (t) { var e = t.getAttribute(o.options.toggleContentAttr); e && e !== i && o.close(e, !1, n) }), !1 !== t && this.options.onSlideStart(!0, i); var e = document.querySelector("[" + this.options.toggleContentAttr + "='" + i + "']"), s = this.getTargetHeight(e); e.classList.add(this.options.activeClass); var a = document.querySelectorAll("[" + this.options.toggleButtonAttr + "='" + i + "']"); 0 < a.length && [].slice.call(a).forEach(function (t) { t.classList.add(o.options.activeClass) }), n ? (e.style.overflow = "hidden", e.style.transition = this.options.animationSpeed + "ms " + this.options.cssEasing, e.style.maxHeight = (s || "1000") + "px", setTimeout(function () { !1 !== t && o.options.onSlideEnd(!0, i), e.style.maxHeight = "none", e.style.transition = "", e.style.overflow = "", o.itemsState[i].isAnimating = !1 }, this.options.animationSpeed)) : (e.style.maxHeight = "none", e.style.overflow = "", this.itemsState[i].isAnimating = !1), this.itemsState[i].isOpen = !0 } }, s.prototype.close = function (t, e, i) { var n = this; if (void 0 === e && (e = !0), void 0 === i && (i = !0), t) { this.itemsState.hasOwnProperty(t) || this.setItemState(t, !1), !(this.itemsState[t].isAnimating = !0) !== e && this.options.onSlideStart(!1, t); var o = document.querySelector("[" + this.options.toggleContentAttr + "='" + t + "']"); o.style.overflow = "hidden", o.classList.remove(this.options.activeClass), o.style.maxHeight = o.clientHeight + "px", setTimeout(function () { o.style.maxHeight = "0px" }, 5); var s = document.querySelectorAll("[" + this.options.toggleButtonAttr + "='" + t + "']"); 0 < s.length && [].slice.call(s).forEach(function (t) { t.classList.remove(n.options.activeClass) }), i ? (o.style.transition = this.options.animationSpeed + "ms " + this.options.cssEasing, setTimeout(function () { !1 !== e && n.options.onSlideEnd(!1, t), o.style.transition = "", n.itemsState[t].isAnimating = !1 }, this.options.animationSpeed)) : (this.options.onSlideEnd(!1, t), this.itemsState[t].isAnimating = !1), this.itemsState.hasOwnProperty(t) && (this.itemsState[t].isOpen = !1) } }, s.prototype.getTargetHeight = function (t) { if (t) { var e = t.cloneNode(!0), i = t.parentNode; if (i) { e.style.maxHeight = "none", e.style.opacity = "0", i.appendChild(e); var n = e.clientHeight; return i.removeChild(e), n } } }, s); function s(t) { void 0 === t && (t = {}), this.itemsState = {}; var e = "object" == typeof t && "nameSpace" in t ? t.nameSpace : "hc", i = { nameSpace: "hc", toggleButtonAttr: "data-" + e + "-control", toggleContentAttr: "data-" + e + "-content", activeClass: "is-active", isAnimation: !0, closeOthers: !0, animationSpeed: 400, cssEasing: "ease-in-out", onSlideStart: function () { }, onSlideEnd: function () { } }; this.options = n({}, i, t), this.toggleContentEls = document.querySelectorAll("[" + this.options.toggleContentAttr + "]"), this.toggleButtonEls = document.querySelectorAll("[" + this.options.toggleButtonAttr + "]"), this.init() } window.HandyCollapse = o; }]);
 
     </script>
 
