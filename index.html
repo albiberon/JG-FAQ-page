@@ -16,7 +16,10 @@
 
 
     <style>
-        @font-face{font-family:Luma-Icons;src:url(fonts/Luma-Icons.woff2)}
+        @font-face {
+            font-family: Luma-Icons;
+            src: url(fonts/Luma-Icons.woff2)
+        }
 
         body {
             font-family: 'Open Sans', sans-serif;
@@ -49,7 +52,7 @@
 
         .box p {
             line-height: 1.6;
-            padding: 30px 10%;
+            padding: 30px 4% 30px 7.5%;
         }
 
         .faq {
@@ -72,12 +75,24 @@
             transition: box-shadow .1s linear;
         }
 
-        input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
-        input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+        input[type=text]::-ms-clear {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        input[type=text]::-ms-reveal {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
         input[type="search"]::-webkit-search-decoration,
         input[type="search"]::-webkit-search-cancel-button,
         input[type="search"]::-webkit-search-results-button,
-        input[type="search"]::-webkit-search-results-decoration { display: none; }
+        input[type="search"]::-webkit-search-results-decoration {
+            display: none;
+        }
 
         .faq input::-webkit-input-placeholder {
             color: #a1bdcb !important;
@@ -125,8 +140,8 @@
             color: #4ec425;
         }
 
-        .closebutton-added::before{
-            content: "\e621"!important;
+        .closebutton-added::before {
+            content: "\e621" !important;
         }
 
         /* .faq>ul>li h2::before {
@@ -299,6 +314,8 @@
         .permanent-faq-container {
             background-color: #f5f5f5;
             margin-top: 50px;
+            padding-left: 10%;
+            padding-right: 10%;
         }
 
         .content-container {
@@ -334,9 +351,12 @@
 
 
         .button-content {
+            font-weight: 300;
+            font-family: "Open Sans";
             cursor: pointer;
             padding-bottom: calc(.375em - 1px);
-            padding-left: 12%;
+            padding-left: 2.5%;
+            padding-right: 2.5%;
             padding-top: calc(.375em - 1px);
             text-align: center;
             white-space: nowrap;
@@ -346,16 +366,20 @@
             border-bottom: 1px solid #3b4d63;
         }
 
-        .button-content .fa, .button-content .far,button .fas {
-            min-width: 45px;
+        .button-content .fa,
+        .button-content .far,
+        button .fas {
+            padding-top: 4px;
+            min-width: 30px;
             text-align: left;
+            padding-right: 3%;
         }
 
         .button-content.child-opener {
             background-color: #edf8f5;
             border-color: #dcebed;
             color: #363636;
-            height: 80px!important;
+            height: 80px !important;
             font-size: 1.25rem;
         }
 
@@ -371,6 +395,7 @@
             content: "\e622";
             margin-right: 3.5%;
             color: #4ec425;
+            padding-top: 4px;
         }
 
         button.button-content.child-opener.is-active::before {
@@ -436,19 +461,21 @@
             font-family: "luma-icons";
             font-weight: 400;
             content: "\e616";
-            position:absolute;
+            position: absolute;
             right: 15%;
             color: #fff;
             z-index: 999;
+            padding-top:4px;
         }
 
-        .child-opener.is-active::after{
+        .child-opener.is-active::after {
             font-family: "luma-icons";
             font-weight: 400;
             content: "\e616";
-            position:absolute;
+            position: absolute;
             right: 15%;
             z-index: 999;
+            padding-top:4px;
         }
 
         .button-content.is-primary {
@@ -459,9 +486,10 @@
             font-size: 20px;
         }
 
-        .content-container h1, .help-container h1 {
+        /* .content-container h1,
+        .help-container h1 {
             padding-left: 12%;
-        }
+        } */
 
         .help-container {
             margin-bottom: 25px;
@@ -484,13 +512,12 @@
             display: none;
         }
 
-        .content-details-text{
+        .content-details-text {
             font-size: 16px;
             font-weight: 300;
-            padding-left: 6.5%;
         }
 
-        .box > p {
+        .box>p {
             font-size: 16px;
             font-weight: 300;
         }
@@ -498,48 +525,58 @@
 
         /* scroll related styles */
         .scrolltop {
-	display:none;
-	width:100%;
-	margin:0 auto;
-	position:fixed;
-	bottom:20px;
-	right:10px;	
-}
-.scroll {
-	position:absolute;
-	right:20px;
-	bottom:20px;
-	background:#b2b2b2;
-	background:rgba(178,178,178,0.7);
-	padding:20px;
-	text-align: center;
-	margin: 0 0 0 0;
-	cursor:pointer;
-	transition: 0.5s;
-	-moz-transition: 0.5s;
-	-webkit-transition: 0.5s;
-	-o-transition: 0.5s; 		
-}
-.scroll:hover {
-	background:rgba(178,178,178,1.0);
-	transition: 0.5s;
-	-moz-transition: 0.5s;
-	-webkit-transition: 0.5s;
-	-o-transition: 0.5s; 		
-}
-.scroll:hover .fa {
-	padding-top:-10px;
-}
-.scroll .fa {
-	font-size:30px;
-	margin-top:-5px;
-	margin-left:1px;
-	transition: 0.5s;
-	-moz-transition: 0.5s;
-	-webkit-transition: 0.5s;
-	-o-transition: 0.5s; 	
-}
+            display: none;
+            width: 100%;
+            margin: 0 auto;
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+        }
 
+        .scroll {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            background: #b2b2b2;
+            background: rgba(178, 178, 178, 0.7);
+            padding: 25px 27px;
+            text-align: center;
+            margin: 0 0 0 0;
+            cursor: pointer;
+            transition: 0.5s;
+            -moz-transition: 0.5s;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            border-radius: 50%;
+        }
+
+        .scroll:hover {
+            background: rgba(178, 178, 178, 1.0);
+            transition: 0.5s;
+            -moz-transition: 0.5s;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+        }
+
+        .scroll:hover .fa {
+            padding-top: -10px;
+        }
+
+
+        .scroll.icon::before {
+            font-family: "luma-icons";
+            font-weight: 700;
+            content: "\e621";
+            font-size: 20px;
+        }
+
+        .second-section-h1{
+            padding-left: 2%;
+        }
+
+        p.top-faq-p {
+            padding-left: 4%;
+        }
     </style>
 
     <!-- <script>
@@ -579,13 +616,13 @@
 
         <div class="permanent-faq-container">
             <div class="content-container">
-                <h1>Answers on all topics</h1>
+                <h1 class=second-section-h1>Answers on all topics</h1>
 
                 <div id="faqBlock-list">
 
                     <button type="button" class="button-content is-primary is-fullwidth is-medium"
                         data-nested-control="content01">
-                        <i class="fas fa-info-circle"></i> Product Information 
+                        <i class="fas fa-info-circle"></i> Product Information
                     </button>
                     <div data-nested-content="content01" class="collapsible-content hidden">
                         <div class="box">
@@ -644,7 +681,7 @@
                                 </div>
                             </div>
                             <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child04" >
+                                data-nested-control="child04">
                                 Accessories & Spare Parts
                             </button>
                             <div data-nested-content="child04" class="collapsible-sub-content hidden">
@@ -1301,7 +1338,8 @@
                                 <div class="box" style="background-color:#FFF">
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis
+                                        nostrud exercitation ullamco laboris nisi ut
                                         aliquip ex ea commodo consequat. Duis auteirure
                                         dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                                         pariatur. Excepteur sint occaecatcupidatat
@@ -1360,14 +1398,16 @@
         </div>
 
         <div class="help-container">
-                <h1>Need more help?</h1>
-                <button class="button-content contact-button">Contact Us</button>
+            <h1>Need more help?</h1>
+            <button class="button-content contact-button">Contact Us</button>
         </div>
 
-            <!-- scroll related html -->
-    <div class='scrolltop'>
-        <div class='scroll icon'><i class="fa fa-4x fa-angle-up"></i></div>
-    </div>
+        <!-- scroll related html -->
+        <div class='scrolltop'>
+            <div class='scroll icon'>
+                <!-- <i class="fa fa-4x fa-angle-up"></i> -->
+            </div>
+        </div>
 
 
     </div>
@@ -1414,32 +1454,32 @@
         // Faq content populator
         var htmlFaqContent = faqContent.map(function (element) {
             return `<li id="faq-${element.id}"><h2> <a class="faq-detail-button" href="#faq-${element.id}">${element.header}</a></h2>
-                    <div class="content-details-text"><p>${element.content}</p></div>
+                    <div class="content-details-text"><p class="top-faq-p">${element.content}</p></div>
                     </li>`;
         });
 
         $(".faq-list").html(htmlFaqContent);
         //Faq content populator ends
 
-        $(".faq-detail-button").click(function(){
-            if($(".faq-detail-button").hasClass("closebutton-added")){
+        $(".faq-detail-button").click(function () {
+            if ($(".faq-detail-button").hasClass("closebutton-added")) {
                 $(".faq-detail-button").removeClass("closebutton-added");
             }
             $(this).toggleClass("closebutton-added");
         });
 
 
-        $("button.is-primary").click(function(){
+        $("button.is-primary").click(function () {
 
-            if(!$(this).hasClass("is-active")){
-                $("button.is-primary").each(function(){
-                $(this).removeClass("is-active");
-            });
-            $(".collapsible-content").each(function(){
-                $(this).addClass("hidden");
-            });
-            $(this).addClass("is-active");
-            $(this).next().toggleClass("hidden");
+            if (!$(this).hasClass("is-active")) {
+                $("button.is-primary").each(function () {
+                    $(this).removeClass("is-active");
+                });
+                $(".collapsible-content").each(function () {
+                    $(this).addClass("hidden");
+                });
+                $(this).addClass("is-active");
+                $(this).next().toggleClass("hidden");
             } else {
                 $(this).removeClass("is-active");
                 $(this).next().addClass("hidden");
@@ -1449,40 +1489,40 @@
 
 
 
-        $("button.child-opener").click(function(){
-            if(!$(this).hasClass("is-active")){
-                $("button.child-opener").each(function(){$(this).removeClass("is-active");});
-                $("button.child-opener").siblings($(".collapsible-content")).each(function(){
-                $(this).addClass("hidden");
-            });
-            $(this).toggleClass("is-active");
-            $(this).next().toggleClass("hidden");
+        $("button.child-opener").click(function () {
+            if (!$(this).hasClass("is-active")) {
+                $("button.child-opener").each(function () { $(this).removeClass("is-active"); });
+                $("button.child-opener").siblings($(".collapsible-content")).each(function () {
+                    $(this).addClass("hidden");
+                });
+                $(this).toggleClass("is-active");
+                $(this).next().toggleClass("hidden");
             } else {
                 $(this).removeClass("is-active");
                 $(this).next().addClass("hidden");
             }
-            
+
 
         });
 
-        $(".button-content.is-primary.is-fullwidth.is-medium.is-active").click(function(){
+        $(".button-content.is-primary.is-fullwidth.is-medium.is-active").click(function () {
             $(this).next().toggleClass("hidden");
             $(this).removeClass("is-active");
         });
 
 
         // search & highlight script
-        !function (s) { var e = s(".faq"); if (!e.length) return; var t = e.find("input"), a = e.find(".faq__notfound"), l = e.find("> ul > li"), h = s(), r = []; l.each(function () { r.push(s(this).text().replace(/\s{2,}/g, " ").toLowerCase()) }), t.on("keyup", function (e) { if(13 == e.keyCode) return t.trigger("blur"), !0; l.each(function () { (h = s(this)).html(h.html().replace(/<span class="highlight">([^<]+)<\/span>/gi, "$1")) }); var i = s.trim(t.val()).toLowerCase(); if (i.length) for (var n in r) h = l.eq(n), -1 != r[n].indexOf(i) ? h.removeClass("is-hidden").html(h.html().replace(new RegExp(i + "(?!([^<]+)?>)", "gi"), '<span class="highlight">$&</span>')) : h.addClass("is-hidden"); else l.removeClass("is-hidden"); a.toggleClass("is-visible", 0 == l.not(".is-hidden").length)}) }(jQuery, window, document);
-        
+        !function (s) { var e = s(".faq"); if (!e.length) return; var t = e.find("input"), a = e.find(".faq__notfound"), l = e.find("> ul > li"), h = s(), r = []; l.each(function () { r.push(s(this).text().replace(/\s{2,}/g, " ").toLowerCase()) }), t.on("keyup", function (e) { if (13 == e.keyCode) return t.trigger("blur"), !0; l.each(function () { (h = s(this)).html(h.html().replace(/<span class="highlight">([^<]+)<\/span>/gi, "$1")) }); var i = s.trim(t.val()).toLowerCase(); if (i.length) for (var n in r) h = l.eq(n), -1 != r[n].indexOf(i) ? h.removeClass("is-hidden").html(h.html().replace(new RegExp(i + "(?!([^<]+)?>)", "gi"), '<span class="highlight">$&</span>')) : h.addClass("is-hidden"); else l.removeClass("is-hidden"); a.toggleClass("is-visible", 0 == l.not(".is-hidden").length) }) }(jQuery, window, document);
+
         // scroll related script
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 50 ) {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
                 $('.scrolltop:hidden').stop(true, true).fadeIn();
-                } else  {
-                            $('.scrolltop').stop(true, true).fadeOut();
-                        }
+            } else {
+                $('.scrolltop').stop(true, true).fadeOut();
+            }
         });
-        $(function(){$(".scroll").click(function(){$("html,body").animate({scrollTop:$(".container").offset().top},"1000");return false})});
+        $(function () { $(".scroll").click(function () { $("html,body").animate({ scrollTop: $(".container").offset().top }, "1000"); return false }) });
 
     </script>
 
