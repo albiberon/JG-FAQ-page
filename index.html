@@ -10,8 +10,6 @@
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=latin-ext"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
@@ -66,11 +64,12 @@
             font-size: 18px;
             font-style: italic;
             font-weight: 300;
+            font-family:"Open Sans";
             background-color: #fff;
             box-shadow: 0px 2px 4px rgba(52, 67, 75, .2);
             display: block;
             padding: 0 20px;
-            margin: 40px auto;
+            margin: 10px auto 40px auto;
             -webkit-transition: box-shadow .1s linear;
             transition: box-shadow .1s linear;
         }
@@ -279,12 +278,10 @@
 
         .input-container {
             padding-top: 20px;
-            padding-right: 12%;
-            padding-left: 12%;
-            background-color: #edf8f5;
             margin: 0 auto;
             display: block;
             padding-bottom: 20px;
+            background-color: #edf8f5;
         }
 
         .faq-list {
@@ -325,9 +322,10 @@
         }
 
         .help-container {
-            max-width: 100%;
             margin: auto;
             padding-top: 10px;
+            padding-left: 11%;
+            padding-right: 12%;
         }
 
         @media screen and (max-width: 40em),
@@ -468,6 +466,18 @@
             padding-top:4px;
         }
 
+        .second-step-header::after{
+            font-family: "luma-icons";
+            font-weight: 300;
+            content: "\e616";
+            position: absolute;
+            right: 15%;
+            z-index: 999;
+            padding-top:4px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
         .child-opener.is-active::after {
             font-family: "luma-icons";
             font-weight: 400;
@@ -495,12 +505,9 @@
             font-weight: 400;
             letter-spacing: 1.1px;
             color: #ffffff;
-            padding: 10px 35px 10px 35px;
+            padding: 10px 35px;
             border-radius: 4px;
             background-color: #228600;
-            margin-left: 12.6%;
-            margin-right: 12.6%;
-            width: 66.8%;
         }
 
         .hidden {
@@ -572,6 +579,26 @@
         p.top-faq-p {
             padding-left: 4%;
         }
+
+        .search-section-form{
+            padding-top: 15px;
+            padding-left: 12%;
+            padding-right: 12%;
+
+        }
+
+        .first-section-h1{
+            padding-left: 11%;
+            padding-right: 11%;
+        }
+
+        .email-contact-button{
+            font-family: "Open Sans";
+            font-weight: 400;
+            font-size: 18px;
+            min-width: 350px;
+            margin: 10px 0;
+        }
     </style>
 
     <!-- <script>
@@ -595,10 +622,9 @@
     <div class="container" role="main">
 
         <div class="faq">
-
+            <h1 class="first-section-h1">Information & Contact</h1>
             <div class="input-container">
-                <h1>Information & Contact</h1>
-                <form>
+                <form class="search-section-form">
                     <label for="search-section">Ask your question here</label>
                     <input type="text" aria-label="Search section" title="Search section" name="search-section" value="" placeholder="Type something (e.g. delivery, payment...)"/>
                 </form>
@@ -1395,10 +1421,17 @@
             </div>
         </div>
 
-        <div class="help-container">
+        <div class="help-container first-step-help-section">
             <h1>Need more help?</h1>
-            <button class="button-content contact-button">Contact Us</button>
+            <button class="button-content contact-button first-step-contact-button">Contact Us</button>
         </div>
+        <div class="help-container contact-details-container hidden">
+            <h1 class="second-step-header">Need more help?</h1>
+            <a href="mailto:info@junglegym.com"><button class="button-content contact-button email-contact-button"><i class="fas fa-envelope"></i>Email us</button></a><br>
+            <a href="https://tawk.to/chat/58ac251df42d220ab3f8e57e/default" target="_blank"><button class="button-content contact-button email-contact-button"><i class="fas fa-comment"></i>Chat with us</button></a><br>
+            <a href="tel:+31(0)854444100"><button class="button-content contact-button email-contact-button"> <i class="fas fa-phone"></i>+31 (0) 85 4444 100</button></a><br>
+        </div>
+
 
         <!-- scroll related html -->
         <div class='scrolltop'>
@@ -1522,6 +1555,16 @@
         });
         $(function () { $(".scroll").click(function () { $("html,body").animate({ scrollTop: $(".container").offset().top }, "1000"); return false }) });
 
+
+        $(".first-step-contact-button").click(function(){
+            $(".first-step-help-section").addClass("hidden");
+            $(".contact-details-container").removeClass("hidden");
+        });
+
+        $(".contact-details-container").click(function(){
+            $(this).addClass("hidden");
+            $(".first-step-help-section").removeClass("hidden");
+        });
     </script>
 
 </body>
