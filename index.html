@@ -1,1365 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>FAQ Page</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=latin-ext"
-        rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-    <style>
-        @font-face {
-            font-family: Luma-Icons;
-            src: url(fonts/Luma-Icons.woff2)
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: #333;
-            margin: unset;
-        }
-
-        .container {
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 40px;
-            font-weight: 300;
-            line-height: 1.1;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .container h1 a:hover,
-        .container h1 a:focus {
-            color: black;
-        }
-
-        .container p {
-            line-height: 1.6;
-            margin: unset;
-        }
-
-        .box p {
-            line-height: 1.6;
-            padding: 30px 4% 30px 7.5%;
-        }
-
-        .faq {
-            margin: 0 auto;
-        }
-
-        .faq input {
-            border: unset;
-            width: 100%;
-            height: 60px;
-            font-size: 18px;
-            font-style: italic;
-            font-weight: 300;
-            font-family: "Open Sans";
-            background-color: #fff;
-            box-shadow: 0px 2px 4px rgba(52, 67, 75, .2);
-            display: block;
-            padding: 0 0 0 20px;
-            margin: 10px auto 40px auto;
-            -webkit-transition: box-shadow .1s linear;
-            transition: box-shadow .1s linear;
-        }
-
-        input[type=text]::-ms-clear {
-            display: none;
-            width: 0;
-            height: 0;
-        }
-
-        input[type=text]::-ms-reveal {
-            display: none;
-            width: 0;
-            height: 0;
-        }
-
-        input[type="search"]::-webkit-search-decoration,
-        input[type="search"]::-webkit-search-cancel-button,
-        input[type="search"]::-webkit-search-results-button,
-        input[type="search"]::-webkit-search-results-decoration {
-            display: none;
-        }
-
-        .faq input::-webkit-input-placeholder {
-            color: #a1bdcb !important;
-
-        }
-
-        .faq input::-moz-placeholder {
-            color: #a1bdcb !important;
-        }
-
-        .faq input:-ms-input-placeholder {
-            color: #a1bdcb !important;
-        }
-
-        .faq input:focus {
-            box-shadow: 0px 4px 8px rgba(52, 67, 75, .4);
-        }
-
-        .faq .highlight {
-            background-color: #fffd77;
-        }
-
-        .faq>ul>li:not( :first-child) {
-            border-top: 1px solid #dcebed;
-            margin-top: 20px;
-            padding-top: 20px;
-        }
-
-        .faq>ul>li.is-hidden {
-            display: none;
-        }
-
-        .faq>ul>li h2 {
-            font-size: 20px;
-            font-weight: 300;
-            padding-bottom: 14px;
-        }
-
-
-        .faq-detail-button::before {
-            font-family: "luma-icons";
-            font-weight: 700;
-            content: "\e622";
-            padding-right: 3.5%;
-            color: #4ec425;
-        }
-
-        .closebutton-added::before {
-            content: "\e621" !important;
-        }
-
-        /* .faq>ul>li h2::before {
-            font-family: "Font Awesome 5 Free";
-            font-weight: 700;
-            content: "\f067";
-            padding-right: 5%;
-            color: #4ec425;
-        } */
-
-
-        .faq>ul>li.is-active h2::before {
-            font-family: "Font Awesome 5 Free";
-            font-weight: 700;
-            content: "\f00d";
-            padding-right: 5%;
-            color: #4ec425;
-
-        }
-
-
-        .faq>ul>li>div {
-            display: none;
-        }
-
-        .faq>ul>li.is-active>div,
-        .faq>ul>li:target>div {
-            display: block;
-            margin-top: 10px;
-        }
-
-        .faq__notfound {
-            font-size: 20px;
-            font-style: italic;
-            display: none;
-            text-align: center;
-        }
-
-        .faq__notfound.is-visible {
-            display: block;
-        }
-
-        /* .sm {
-            width: 100%;
-            height: 2.5rem;
-
-            color: #444;
-            color: rgba(0, 0, 0, .75);
-            background-color: #fff;
-            background-color: rgba(255, 255, 255, .5);
-            overflow: hidden;
-            position: fixed;
-            z-index: 1001;
-            bottom: 0;
-            left: 0;
-            padding: 0.625rem 1.25rem 0;
-
-        } */
-
-        .sm--dark {
-            color: #ddd;
-            color: rgba(255, 255, 255, .75);
-            background-color: #111;
-            background-color: rgba(0, 0, 0, .5);
-        }
-
-        .sm li {
-            float: right;
-            margin-left: 1rem;
-        }
-
-        .sm li:first-child {
-            float: left;
-            margin-left: 0;
-        }
-
-        .sm .googleplus-one {
-            max-width: 60px;
-        }
-
-        .sm .twitter-follow>*:not( :first-child),
-        .sm .twitter-share>*:not( :first-child) {
-            display: none;
-        }
-
-        @media screen {
-            @media (min-width: 0px)
-
-            /* everything but Internet Explorer and Safari ≤6 */
-                {
-                .sm li:last-child {
-                    opacity: 0;
-                    -webkit-transition: opacity .25s ease-in-out;
-                    transition: opacity .25s ease-in-out;
-                }
-
-                .sm:hover li:last-child {
-                    opacity: 1;
-                }
-            }
-        }
-
-        .sm__back {
-            font-size: 0.875rem;
-            /* 14 */
-            font-weight: bold;
-            color: currentColor;
-            text-transform: uppercase;
-            position: relative;
-        }
-
-        .sm__back::before {
-            width: 0;
-            height: 0;
-            border: 0.313rem solid transparent;
-            /* 5 */
-            border-left: none;
-            border-right-color: currentColor;
-            content: '';
-            display: inline-block;
-            position: relative;
-            left: 0;
-            margin-right: 0.313rem;
-            /* 5 */
-
-            -webkit-transition: left .25s ease-in-out;
-            transition: left .25s ease-in-out;
-        }
-
-        .sm__back:hover::before,
-        .sm__back:focus::before {
-            left: -0.313rem;
-            /* 5 */
-        }
-
-        .input-container {
-            padding-top: 10px;
-            margin: 0 auto;
-            display: block;
-            padding-bottom: 5px;
-            background-color: #edf8f5;
-        }
-
-        .faq-list {
-            padding-top: 1%;
-            padding-left: 12%;
-            padding-right: 12%;
-            margin: 0 auto;
-        }
-
-        ul.faq-list li {
-            list-style-type: none;
-        }
-
-        a:-webkit-any-link {
-            text-decoration: none;
-            color: unset;
-        }
-
-        a:-webkit-any-link:hover {
-            color: unset;
-        }
-
-        /*
-	RESPONSIVENESS
-*/
-
-        .permanent-faq-container {
-            background-color: #f5f5f5;
-            margin-top: 50px;
-            padding-left: 10%;
-            padding-right: 10%;
-        }
-
-        .content-container {
-            max-width: 100%;
-            margin: auto;
-        }
-
-        .help-container {
-            margin: auto;
-            padding-top: 10px;
-            padding-left: 11%;
-            padding-right: 12%;
-        }
-
-        @media screen and (max-width: 40em),
-        screen and (max-height: 40em)
-
-        /* 640 */
-            {
-            .sm {
-                display: none;
-            }
-        }
-
-        .is-warning.is-active {
-            background-color: #f1f1f1
-        }
-
-        .is-warning.is-active {
-            background-color: #f1f1f1
-        }
-
-
-
-        .button-content {
-            font-weight: 300;
-            font-family: "Open Sans";
-            cursor: pointer;
-            padding-bottom: calc(.375em - 1px);
-            padding-left: 2.5%;
-            padding-right: 2.5%;
-            padding-top: calc(.375em - 1px);
-            text-align: center;
-            white-space: nowrap;
-            border-right: none;
-            border-top: none;
-            border-left: none;
-            border-bottom: 1px solid #3b4d63;
-        }
-
-        .button-content .fa,
-        .button-content .far,
-        button .fas {
-            padding-top: 4px;
-            min-width: 30px;
-            text-align: left;
-            padding-right: 3%;
-        }
-
-        .button-content.child-opener {
-            background-color: #edf8f5;
-            border-color: #dcebed;
-            color: #363636;
-            height: 80px !important;
-            font-size: 1.25rem;
-        }
-
-        .button-content.is-fullwidth {
-            display: flex;
-            width: 100%;
-            height: 50px;
-        }
-
-        button.button-content.child-opener::before {
-            font-family: "luma-icons";
-            font-weight: 300;
-            content: "\e622";
-            margin-right: 3.5%;
-            color: #4ec425;
-            padding-top: 4px;
-        }
-
-        button.button-content.child-opener.is-active::before {
-            content: "\e621";
-        }
-
-        .button-content.is-info.is-active {
-            background-color: #dcebed;
-        }
-
-        .title {
-            color: #363636;
-            font-size: 2rem;
-            font-weight: 600;
-            line-height: 1.125;
-        }
-
-        .title.is-1 {
-            font-size: 3rem;
-            text-align: center;
-        }
-
-        .child-opener {
-            font-size: 18px;
-            font-weight: 300;
-        }
-
-        .box {
-            background: #f2f2f2;
-            color: #4a4a4a;
-            display: block;
-        }
-
-        .code-sample {
-            background-color: #333;
-            margin-bottom: 2em;
-            border-radius: 4px;
-        }
-
-        .tab-button.is-active {
-            pointer-events: none;
-            ;
-        }
-
-        .tab-content .box {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.5s;
-        }
-
-        .tab-content.is-active .box {
-            opacity: 1;
-            transform: translateY(0px);
-        }
-
-        .button-content.is-primary.is-active,
-        .button-content.is-primary:active {
-            background-color: #1b242f;
-            color: #fff;
-        }
-
-        .button-content.is-primary.is-active::after {
-            font-family: "luma-icons";
-            font-weight: 400;
-            content: "\e616";
-            position: absolute;
-            right: 15%;
-            color: #fff;
-            z-index: 999;
-            padding-top: 4px;
-        }
-
-        .second-step-header::after {
-            font-family: "luma-icons";
-            font-weight: 300;
-            content: "\e616";
-            position: absolute;
-            right: 15%;
-            z-index: 999;
-            padding-top: 4px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .child-opener.is-active::after {
-            font-family: "luma-icons";
-            font-weight: 400;
-            content: "\e616";
-            position: absolute;
-            right: 15%;
-            z-index: 999;
-            padding-top: 4px;
-        }
-
-        .button-content.is-primary {
-            background-color: #273443;
-            color: #fff;
-            height: 80px;
-            font-weight: 300;
-            font-size: 20px;
-        }
-
-        .help-container {
-            margin-bottom: 25px;
-        }
-
-        .button-content.contact-button {
-            font-size: 22px;
-            font-weight: 400;
-            letter-spacing: 1.1px;
-            color: #ffffff;
-            padding: 10px 35px;
-            border-radius: 4px;
-            background-color: #228600;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .content-details-text {
-            font-size: 16px;
-            font-weight: 300;
-        }
-
-        .box>p {
-            font-size: 16px;
-            font-weight: 300;
-        }
-
-
-        /* scroll related styles */
-        .scrolltop {
-            display: none;
-            width: 100%;
-            margin: 0 auto;
-            position: fixed;
-            bottom: 20px;
-            right: 10px;
-        }
-
-        .scroll {
-            position: absolute;
-            right: 20px;
-            bottom: 20px;
-            background: #b2b2b2;
-            background: rgba(178, 178, 178, 0.7);
-            padding: 25px 27px;
-            text-align: center;
-            margin: 0 0 0 0;
-            cursor: pointer;
-            transition: 0.5s;
-            -moz-transition: 0.5s;
-            -webkit-transition: 0.5s;
-            -o-transition: 0.5s;
-            border-radius: 50%;
-        }
-
-        .scroll:hover {
-            background: rgba(178, 178, 178, 1.0);
-            transition: 0.5s;
-            -moz-transition: 0.5s;
-            -webkit-transition: 0.5s;
-            -o-transition: 0.5s;
-        }
-
-        .scroll:hover .fa {
-            padding-top: -10px;
-        }
-
-
-        .scroll.icon::before {
-            font-family: "luma-icons";
-            font-weight: 700;
-            content: "\e621";
-            font-size: 20px;
-        }
-
-        .second-section-h1 {
-            padding-left: 2%;
-            font-size: 26px;
-            padding-top: 30px;
-        }
-
-        p.top-faq-p {
-            padding-left: 4%;
-        }
-
-        .search-section-form {
-            padding-top: 15px;
-            padding-left: 12%;
-            padding-right: 12%;
-
-        }
-
-        .first-section-h1 {
-            padding-left: 11%;
-            padding-right: 11%;
-        }
-
-        .email-contact-button {
-            font-family: "Open Sans";
-            font-weight: 400;
-            font-size: 18px;
-            min-width: 350px;
-            margin: 10px 0;
-        }
-
-        .help-container-header {
-            font-size: 26px;
-            font-weight: 300;
-            line-height: 1.1;
-            margin-top: 25px;
-            margin-bottom: 20px;
-        }
-
-        @media screen and (max-width:900px) {
-            .permanent-faq-container {
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            .faq-list {
-                padding-top: 1%;
-                padding-left: 2%;
-                padding-right: 2%;
-                margin: 0 auto;
-            }
-
-            .search-section-form {
-                padding-top: 15px;
-                padding-left: 2%;
-                padding-right: 2%;
-            }
-
-            .first-section-h1 {
-                padding-left: 2%;
-                padding-right: 2%;
-                font-size: 40px;
-            }
-
-            .help-container {
-                margin: auto;
-                padding-top: 10px;
-                padding-left: 2%;
-                padding-right: 2%;
-            }
-
-            .button-content.is-primary.is-active::after {
-                right: 5%;
-            }
-
-            .child-opener.is-active::after {
-                right: 5%;
-            }
-
-            .second-step-header::after {
-                right: 5%;
-            }
-        }
-    </style>
-
-    <!-- <script>
-        document.addEventListener(
-            "DOMContentLoaded",
-            () => {
-                //Nested
-                const nested = new HandyCollapse({
-                    nameSpace: "nested",
-                    closeOthers: false
-                });
-            },
-            false
-        );
-    </script> -->
-
-</head>
-
-<body>
-
-    <div class="container" role="main">
-
-        <div class="faq">
-            <h1 class="first-section-h1">Information & Contact</h1>
-            <div class="input-container">
-                <form class="search-section-form">
-                    <label for="search-section">Ask your question here</label>
-                    <input type="text" aria-label="Search section" title="Search section" name="search-section" value=""
-                        placeholder="Type something (e.g. delivery, payment...)" />
-                </form>
-            </div>
-
-            <ul class="faq-list">
-                <!-- Will be populated with the content of faqContent array of objects -->
-            </ul>
-            <div class="faq__notfound">
-                <p>No matches were found&hellip; Try &ldquo;Delivery&rdquo;.</p>
-            </div>
+<div class="container" role="main">
+
+    <div class="faq">
+        <h1 class="first-section-h1">Information & Contact</h1>
+        <div class="input-container">
+            <form class="search-section-form">
+                <label for="search-section">Ask your question here</label>
+                <input type="text" aria-label="Search section" title="Search section" name="search-section" value=""
+                    placeholder="Type something (e.g. delivery, payment...)" />
+            </form>
         </div>
 
-        <div class="permanent-faq-container">
-            <div class="content-container">
-                <h1 class=second-section-h1>Answers on all topics</h1>
+        <ul class="faq-list">
+            <!-- Will be populated with the content of faqContent array of objects -->
+        </ul>
+        <div class="faq__notfound">
+            <p>No matches were found&hellip; Try &ldquo;Delivery&rdquo;.</p>
+        </div>
+    </div>
 
-                <div id="faqBlock-list">
+    <div class="permanent-faq-container">
+        <div class="content-container">
+            <h1 class=second-section-h1>Answers on all topics</h1>
 
-                    <button type="button" class="button-content is-primary is-fullwidth is-medium"
-                        data-nested-control="content01">
-                        <i class="fas fa-info-circle"></i> Product Information
-                    </button>
-                    <div data-nested-content="content01" class="collapsible-content hidden">
-                        <div class="box">
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child01">
-                                Ground
-                            </button>
-                            <div data-nested-content="child01" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child02">
-                                Anchoring
-                            </button>
-                            <div data-nested-content="child02" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child03">
-                                Timber
-                            </button>
-                            <div data-nested-content="child03" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child04">
-                                Accessories & Spare Parts
-                            </button>
-                            <div data-nested-content="child04" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
+            <div id="faqBlock-list">
 
-                        </div>
-                    </div>
-
-                    <button type="button" class="button-content is-primary is-fullwidth is-medium"
-                        data-nested-control="content02">
-                        <i class="fas fa-shopping-cart"></i>Ordering & Payment
-                    </button>
-
-                    <div data-nested-content="content02" class="collapsible-content hidden">
-                        <div class="box">
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child05">
-                                How do I place an order?
-                            </button>
-                            <div data-nested-content="child05" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child06">
-                                What are the accepted payment methods?
-                            </button>
-                            <div data-nested-content="child06" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child07">
-                                Do you offer the option to pay in several installments?
-                            </button>
-                            <div data-nested-content="child07" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child08">
-                                Will I have to pay for tax?
-                            </button>
-                            <div data-nested-content="child08" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child09">
-                                I didn't receive an order confirmation email.
-                            </button>
-                            <div data-nested-content="child09" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child10">
-                                How do I change my order?
-                            </button>
-                            <div data-nested-content="child10" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child11">
-                                How do I cancel my order?
-                            </button>
-                            <div data-nested-content="child11" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <button type="button" class="button-content is-primary is-fullwidth is-medium"
-                        data-nested-control="content03">
-                        <i class="fas fa-truck"></i></i>Delivery
-                    </button>
-
-                    <div data-nested-content="content03" class="collapsible-content hidden">
-                        <div class="box">
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0301">
-                                How do I place an order?
-                            </button>
-                            <div data-nested-content="child0301" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0302">
-                                What are the accepted payment methods?
-                            </button>
-                            <div data-nested-content="child0302" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0303">
-                                Do you offer the option to pay in several installments?
-                            </button>
-                            <div data-nested-content="child0303" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0304">
-                                Will I have to pay for tax?
-                            </button>
-                            <div data-nested-content="child0304" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0305">
-                                I didn't receive an order confirmation email.
-                            </button>
-                            <div data-nested-content="child0305" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0306">
-                                How do I change my order?
-                            </button>
-                            <div data-nested-content="child0306" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium  child-opener"
-                                data-nested-control="child0307">
-                                How do I cancel my order?
-                            </button>
-                            <div data-nested-content="child0307" class="collapsible-sub-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <button type="button" class="button-content is-primary is-fullwidth is-medium"
-                        data-nested-control="content05">
-                        <i class="fas fa-wrench"></i>Assembly
-                    </button>
-
-                    <div data-nested-content="content05" class="collapsible-content hidden">
-                        <div class="box">
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0501">
-                                How do I place an order?
-                            </button>
-                            <div data-nested-content="child0501" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0502">
-                                What are the accepted payment methods?
-                            </button>
-                            <div data-nested-content="child0502" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0503">
-                                Do you offer the option to pay in several installments?
-                            </button>
-                            <div data-nested-content="child0503" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0504">
-                                Will I have to pay for tax?
-                            </button>
-                            <div data-nested-content="child0504" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0505">
-                                I didn't receive an order confirmation email.
-                            </button>
-                            <div data-nested-content="child0505" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0506">
-                                How do I change my order?
-                            </button>
-                            <div data-nested-content="child0506" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0507">
-                                How do I cancel my order?
-                            </button>
-                            <div data-nested-content="child0507" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <button type="button" class="button-content is-primary is-fullwidth is-medium"
-                        data-nested-control="content06">
-                        <i class="fas fa-undo-alt"></i>Right of withdrawal
-                    </button>
-
-                    <div data-nested-content="content06" class="collapsible-content hidden">
-                        <div class="box">
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0601">
-                                How do I place an order?
-                            </button>
-                            <div data-nested-content="child0601" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0602">
-                                What are the accepted payment methods?
-                            </button>
-                            <div data-nested-content="child0602" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0603">
-                                Do you offer the option to pay in several installments?
-                            </button>
-                            <div data-nested-content="child0603" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0604">
-                                Will I have to pay for tax?
-                            </button>
-                            <div data-nested-content="child0604" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0605">
-                                I didn't receive an order confirmation email.
-                            </button>
-                            <div data-nested-content="child0605" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0606">
-                                How do I change my order?
-                            </button>
-                            <div data-nested-content="child0606" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0607">
-                                How do I cancel my order?
-                            </button>
-                            <div data-nested-content="child0607" class="collapsible-content hidden">
-                                <div class="box" style="background-color:#FFF">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.
-                                        Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex
-                                        ea commodo consequat. Duis auteirure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur. Excepteur sint occaecatcupidatat
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <button type="button" class="button-content is-primary is-fullwidth is-medium"
-                        data-nested-control="content07">
-                        <i class="fas fa-check-circle"></i>Warranty
-                    </button>
-
-                    <div data-nested-content="content07" class="collapsible-content hidden">
-                        <div class="box">
-                            <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                                data-nested-control="child0701">
-                                How do I place an order?
-                            </button>
-                            <div data-nested-content="child0701" class="collapsible-content hidden>
-                                <div class=" box" style="background-color:#FFF">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex
-                                    ea commodo consequat. Duis auteirure
-                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecatcupidatat
-                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                            </div>
-                        </div>
+                <button type="button" class="button-content is-primary is-fullwidth is-medium"
+                    data-nested-control="content01">
+                    <i class="fas fa-info-circle"></i> Product Information
+                </button>
+                <div data-nested-content="content01" class="collapsible-content hidden">
+                    <div class="box">
                         <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                            data-nested-control="child0702">
-                            What are the accepted payment methods?
+                            data-nested-control="child01">
+                            Ground
                         </button>
-                        <div data-nested-content="child0702" class="collapsible-content hidden">
+                        <div data-nested-content="child01" class="collapsible-sub-content hidden">
                             <div class="box" style="background-color:#FFF">
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1370,14 +45,15 @@
                                     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                                     pariatur. Excepteur sint occaecatcupidatat
                                     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
                                 </p>
                             </div>
                         </div>
                         <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                            data-nested-control="child0703">
-                            Do you offer the option to pay in several installments?
+                            data-nested-control="child02">
+                            Anchoring
                         </button>
-                        <div data-nested-content="child0703" class="collapsible-content hidden">
+                        <div data-nested-content="child02" class="collapsible-sub-content hidden">
                             <div class="box" style="background-color:#FFF">
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1387,16 +63,16 @@
                                     ea commodo consequat. Duis auteirure
                                     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                                     pariatur. Excepteur sint occaecatcupidatat
-                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                    laborum.
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
                                 </p>
                             </div>
                         </div>
                         <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                            data-nested-control="child0704">
-                            Will I have to pay for tax?
+                            data-nested-control="child03">
+                            Timber
                         </button>
-                        <div data-nested-content="child0704" class="collapsible-content hidden">
+                        <div data-nested-content="child03" class="collapsible-sub-content hidden">
                             <div class="box" style="background-color:#FFF">
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1406,33 +82,16 @@
                                     ea commodo consequat. Duis auteirure
                                     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                                     pariatur. Excepteur sint occaecatcupidatat
-                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                    laborum.
-                            </div>
-                        </div>
-                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                            data-nested-control="child0705">
-                            I didn't receive an order confirmation email.
-                        </button>
-                        <div data-nested-content="child0705" class="collapsible-content hidden">
-                            <div class="box" style="background-color:#FFF">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis
-                                    nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex ea commodo consequat. Duis auteirure
-                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecatcupidatat
-                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                    laborum.
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
                                 </p>
                             </div>
                         </div>
                         <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                            data-nested-control="child0706">
-                            How do I change my order?
+                            data-nested-control="child04">
+                            Accessories & Spare Parts
                         </button>
-                        <div data-nested-content="child0706" class="collapsible-content hidden">
+                        <div data-nested-content="child04" class="collapsible-sub-content hidden">
                             <div class="box" style="background-color:#FFF">
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -1442,27 +101,8 @@
                                     ea commodo consequat. Duis auteirure
                                     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                                     pariatur. Excepteur sint occaecatcupidatat
-                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                    laborum.
-                                </p>
-                            </div>
-                        </div>
-                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
-                            data-nested-control="child0707">
-                            How do I cancel my order?
-                        </button>
-                        <div data-nested-content="child0707" class="collapsible-content hidden">
-                            <div class="box" style="background-color:#FFF">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex
-                                    ea commodo consequat. Duis auteirure
-                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecatcupidatat
-                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                    laborum.
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
                                 </p>
                             </div>
                         </div>
@@ -1470,74 +110,794 @@
                     </div>
                 </div>
 
+                <button type="button" class="button-content is-primary is-fullwidth is-medium"
+                    data-nested-control="content02">
+                    <i class="fas fa-shopping-cart"></i>Ordering & Payment
+                </button>
 
+                <div data-nested-content="content02" class="collapsible-content hidden">
+                    <div class="box">
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child05">
+                            How do I place an order?
+                        </button>
+                        <div data-nested-content="child05" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child06">
+                            What are the accepted payment methods?
+                        </button>
+                        <div data-nested-content="child06" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child07">
+                            Do you offer the option to pay in several installments?
+                        </button>
+                        <div data-nested-content="child07" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child08">
+                            Will I have to pay for tax?
+                        </button>
+                        <div data-nested-content="child08" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child09">
+                            I didn't receive an order confirmation email.
+                        </button>
+                        <div data-nested-content="child09" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child10">
+                            How do I change my order?
+                        </button>
+                        <div data-nested-content="child10" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child11">
+                            How do I cancel my order?
+                        </button>
+                        <div data-nested-content="child11" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+
+                <button type="button" class="button-content is-primary is-fullwidth is-medium"
+                    data-nested-control="content03">
+                    <i class="fas fa-truck"></i></i>Delivery
+                </button>
+
+                <div data-nested-content="content03" class="collapsible-content hidden">
+                    <div class="box">
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0301">
+                            How do I place an order?
+                        </button>
+                        <div data-nested-content="child0301" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0302">
+                            What are the accepted payment methods?
+                        </button>
+                        <div data-nested-content="child0302" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0303">
+                            Do you offer the option to pay in several installments?
+                        </button>
+                        <div data-nested-content="child0303" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0304">
+                            Will I have to pay for tax?
+                        </button>
+                        <div data-nested-content="child0304" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0305">
+                            I didn't receive an order confirmation email.
+                        </button>
+                        <div data-nested-content="child0305" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0306">
+                            How do I change my order?
+                        </button>
+                        <div data-nested-content="child0306" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium  child-opener"
+                            data-nested-control="child0307">
+                            How do I cancel my order?
+                        </button>
+                        <div data-nested-content="child0307" class="collapsible-sub-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="button" class="button-content is-primary is-fullwidth is-medium"
+                    data-nested-control="content05">
+                    <i class="fas fa-wrench"></i>Assembly
+                </button>
+
+                <div data-nested-content="content05" class="collapsible-content hidden">
+                    <div class="box">
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0501">
+                            How do I place an order?
+                        </button>
+                        <div data-nested-content="child0501" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0502">
+                            What are the accepted payment methods?
+                        </button>
+                        <div data-nested-content="child0502" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0503">
+                            Do you offer the option to pay in several installments?
+                        </button>
+                        <div data-nested-content="child0503" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0504">
+                            Will I have to pay for tax?
+                        </button>
+                        <div data-nested-content="child0504" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0505">
+                            I didn't receive an order confirmation email.
+                        </button>
+                        <div data-nested-content="child0505" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0506">
+                            How do I change my order?
+                        </button>
+                        <div data-nested-content="child0506" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0507">
+                            How do I cancel my order?
+                        </button>
+                        <div data-nested-content="child0507" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="button" class="button-content is-primary is-fullwidth is-medium"
+                    data-nested-control="content06">
+                    <i class="fas fa-undo-alt"></i>Right of withdrawal
+                </button>
+
+                <div data-nested-content="content06" class="collapsible-content hidden">
+                    <div class="box">
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0601">
+                            How do I place an order?
+                        </button>
+                        <div data-nested-content="child0601" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0602">
+                            What are the accepted payment methods?
+                        </button>
+                        <div data-nested-content="child0602" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0603">
+                            Do you offer the option to pay in several installments?
+                        </button>
+                        <div data-nested-content="child0603" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0604">
+                            Will I have to pay for tax?
+                        </button>
+                        <div data-nested-content="child0604" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0605">
+                            I didn't receive an order confirmation email.
+                        </button>
+                        <div data-nested-content="child0605" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0606">
+                            How do I change my order?
+                        </button>
+                        <div data-nested-content="child0606" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0607">
+                            How do I cancel my order?
+                        </button>
+                        <div data-nested-content="child0607" class="collapsible-content hidden">
+                            <div class="box" style="background-color:#FFF">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex
+                                    ea commodo consequat. Duis auteirure
+                                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecatcupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="button" class="button-content is-primary is-fullwidth is-medium"
+                    data-nested-control="content07">
+                    <i class="fas fa-check-circle"></i>Warranty
+                </button>
+
+                <div data-nested-content="content07" class="collapsible-content hidden">
+                    <div class="box">
+                        <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                            data-nested-control="child0701">
+                            How do I place an order?
+                        </button>
+                        <div data-nested-content="child0701" class="collapsible-content hidden>
+                            <div class=" box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex
+                                ea commodo consequat. Duis auteirure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                        data-nested-control="child0702">
+                        What are the accepted payment methods?
+                    </button>
+                    <div data-nested-content="child0702" class="collapsible-content hidden">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex
+                                ea commodo consequat. Duis auteirure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                        data-nested-control="child0703">
+                        Do you offer the option to pay in several installments?
+                    </button>
+                    <div data-nested-content="child0703" class="collapsible-content hidden">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex
+                                ea commodo consequat. Duis auteirure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum.
+                                <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                        data-nested-control="child0704">
+                        Will I have to pay for tax?
+                    </button>
+                    <div data-nested-content="child0704" class="collapsible-content hidden">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex
+                                ea commodo consequat. Duis auteirure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum.
+                                <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                        </div>
+                    </div>
+                    <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                        data-nested-control="child0705">
+                        I didn't receive an order confirmation email.
+                    </button>
+                    <div data-nested-content="child0705" class="collapsible-content hidden">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis
+                                nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat. Duis auteirure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum.
+                                <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                        data-nested-control="child0706">
+                        How do I change my order?
+                    </button>
+                    <div data-nested-content="child0706" class="collapsible-content hidden">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex
+                                ea commodo consequat. Duis auteirure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum.
+                                <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <button type="button" class="button-content is-info is-fullwidth is-medium child-opener"
+                        data-nested-control="child0707">
+                        How do I cancel my order?
+                    </button>
+                    <div data-nested-content="child0707" class="collapsible-content hidden">
+                        <div class="box" style="background-color:#FFF">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.
+                                Utenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex
+                                ea commodo consequat. Duis auteirure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                pariatur. Excepteur sint occaecatcupidatat
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum.
+                                <br><br><a href=""><span style="font-weight: 400;">Read more >></span></a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
-    </div>
-
-    <div class="help-container first-step-help-section">
-        <h1 class="help-container-header">Need more help?</h1>
-        <button class="button-content contact-button first-step-contact-button">Contact Us</button>
-    </div>
-    <div class="help-container contact-details-container hidden">
-        <h1 class="help-container-header second-step-header">Need more help?</h1>
-        <a href="mailto:info@junglegym.com"><button class="button-content contact-button email-contact-button"><i
-                    class="fas fa-envelope"></i>Email us</button></a><br>
-        <a href="https://tawk.to/chat/58ac251df42d220ab3f8e57e/default" rel="noopener" target="_blank"><button
-                class="button-content contact-button email-contact-button"><i class="fas fa-comment"></i>Chat with
-                us</button></a><br>
-        <a href="tel:+31(0)854444100"><button class="button-content contact-button email-contact-button"> <i
-                    class="fas fa-phone"></i>+31 (0) 85 4444 100</button></a><br>
-    </div>
-
-
-    <!-- scroll related html -->
-    <div class='scrolltop'>
-        <div class='scroll icon'>
-            <!-- <i class="fa fa-4x fa-angle-up"></i> -->
-        </div>
-    </div>
-
 
     </div>
+</div>
 
-    <script>
+<div class="help-container first-step-help-section">
+    <h1 class="help-container-header">Need more help?</h1>
+    <button class="contact-button first-step-contact-button">Contact us</button>
+</div>
+<div class="help-container contact-details-container hidden">
+    <h1 class="help-container-header second-step-header">Need more help?</h1>
+    <a href="mailto:info@junglegym.com"><button class="contact-button email-contact-button"><i
+                class="fas fa-envelope"></i>Email us</button></a>
+    <a href="https://tawk.to/chat/58ac251df42d220ab3f8e57e/default" rel="noopener" target="_blank"><button
+            class="contact-button email-contact-button"><i class="fas fa-comment"></i>Chat with
+            us</button></a>
+    <a href="tel:+31(0)854444100"><button class="contact-button email-contact-button"> <i class="fas fa-phone"></i>+31
+            (0) 85 4444 100</button></a>
+</div>
 
-        'use strict';
+<!-- scroll related html -->
+<div class='scrolltop'>
+    <div class='scroll icon'>
+        <!-- <i class="fa fa-4x fa-angle-up"></i> -->
+    </div>
+</div>
 
+</div>
+
+<script>
+
+    'use strict';
+
+    require(['jquery', 'domReady!'], function ($) {
         //Faq content starts
 
         var faqContent = [{
             "id": `01`,
             "header": `Do you offer assembly service?`,
             "content": `Yes sure Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt utlabore et dolore magna aliqua.`
+                            incididunt utlabore et dolore magna aliqua.`
         },
         {
             "id": `02`,
             "header": `Is it difficult to assemble a Jungle Gym Playground?`,
             "content": `No not difficult Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt utlabore et dolore magna aliqua.`
+                            incididunt utlabore et dolore magna aliqua.`
         },
         {
             "id": `03`,
             "header": `Do I need to anchor my climbing frame?`,
             "content": `Anchor your frame lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt utlabore et dolore magna aliqua.`
+                            incididunt utlabore et dolore magna aliqua.`
         },
         {
             "id": `04`,
             "header": `When will my order arrive?`,
             "content": `Arrives soon lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt utlabore et dolore magna aliqua.`
+                            incididunt utlabore et dolore magna aliqua.`
         },
         {
             "id": `05`,
             "header": `Can I pay in installments?`,
             "content": `Sure you can pay in installments lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt utlabore et dolore magna aliqua.`
+                            incididunt utlabore et dolore magna aliqua.`
         }
         ];
         //Faq content ends
@@ -1545,9 +905,11 @@
         // Faq content populator
         var htmlFaqContent = faqContent.map(function (element) {
             return `<li id="faq-${element.id}"><h2> <a class="faq-detail-button" href="#faq-${element.id}">${element.header}</a></h2>
-                    <div class="content-details-text"><p class="top-faq-p">${element.content}</p></div>
-                    </li>`;
+                <div class="content-details-text"><p class="top-faq-p">${element.content}</p></div>
+                </li>`;
         });
+
+
 
         $(".faq-list").html(htmlFaqContent);
         //Faq content populator ends
@@ -1625,8 +987,711 @@
             $(this).addClass("hidden");
             $(".first-step-help-section").removeClass("hidden");
         });
-    </script>
 
-</body>
 
-</html>
+
+    });
+</script>
+
+
+
+
+
+
+<style>
+    /* styling to adjust the look of the magento container */
+    .page-wrapper .page-main {
+        padding-left: unset;
+        padding-right: unset;
+        max-width: unset;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    @media (min-width: 800px) {
+        .page-layout-1column .column.main {
+            margin: 0 auto;
+            margin-bottom: unset;
+        }
+    }
+
+    .breadcrumbs {
+        padding: 10px 50px 10px 50px;
+    }
+
+    /* page styling ends */
+
+    @font-face {
+        font-family: Luma-Icons;
+        src: url(fonts/Luma-Icons.woff2)
+    }
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        color: #333;
+        margin: unset;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: 300;
+        line-height: 1.1;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .container h1 a:hover,
+    .container h1 a:focus {
+        color: black;
+    }
+
+    .container p {
+        line-height: 1.6;
+        margin: unset;
+    }
+
+    .box p {
+        line-height: 1.6;
+        padding: 30px 4% 30px 7.5%;
+    }
+
+    .faq {
+        margin: 0 auto;
+    }
+
+    .faq input {
+        border: unset;
+        width: 100%;
+        height: 60px;
+        font-size: 18px;
+        font-style: italic;
+        font-weight: 300;
+        font-family: "Open Sans";
+        background-color: #fff;
+        box-shadow: 0px 2px 4px rgba(52, 67, 75, .2);
+        display: block;
+        padding: 0 0 0 20px;
+        margin: 10px auto 40px auto;
+        -webkit-transition: box-shadow .1s linear;
+        transition: box-shadow .1s linear;
+    }
+
+    input[type=text]::-ms-clear {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    input[type=text]::-ms-reveal {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+        display: none;
+    }
+
+    .faq input::-webkit-input-placeholder {
+        color: #a1bdcb !important;
+
+    }
+
+    .faq input::-moz-placeholder {
+        color: #a1bdcb !important;
+    }
+
+    .faq input:-ms-input-placeholder {
+        color: #a1bdcb !important;
+    }
+
+    .faq input:focus {
+        box-shadow: 0px 4px 8px rgba(52, 67, 75, .4);
+    }
+
+    .faq .highlight {
+        background-color: #fffd77;
+    }
+
+    .faq>ul>li:not( :first-child) {
+        border-top: 1px solid #dcebed;
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+
+    .faq>ul>li.is-hidden {
+        display: none;
+    }
+
+    .faq>ul>li h2 {
+        font-size: 20px;
+        font-weight: 300;
+        padding-bottom: 14px;
+    }
+
+
+    .faq-detail-button::before {
+        font-family: "luma-icons";
+        font-weight: 700;
+        content: "\e622";
+        padding-right: 3.5%;
+        color: #4ec425;
+    }
+
+    .closebutton-added::before {
+        content: "\e621" !important;
+    }
+
+    /* .faq>ul>li h2::before {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 700;
+        content: "\f067";
+        padding-right: 5%;
+        color: #4ec425;
+    } */
+
+
+    .faq>ul>li.is-active h2::before {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 700;
+        content: "\f00d";
+        padding-right: 5%;
+        color: #4ec425;
+
+    }
+
+
+    .faq>ul>li>div {
+        display: none;
+    }
+
+    .faq>ul>li.is-active>div,
+    .faq>ul>li:target>div {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .faq__notfound {
+        font-size: 20px;
+        font-style: italic;
+        display: none;
+        text-align: center;
+    }
+
+    .faq__notfound.is-visible {
+        display: block;
+    }
+
+    /* .sm {
+        width: 100%;
+        height: 2.5rem;
+
+        color: #444;
+        color: rgba(0, 0, 0, .75);
+        background-color: #fff;
+        background-color: rgba(255, 255, 255, .5);
+        overflow: hidden;
+        position: fixed;
+        z-index: 1001;
+        bottom: 0;
+        left: 0;
+        padding: 0.625rem 1.25rem 0;
+
+    } */
+
+    .sm--dark {
+        color: #ddd;
+        color: rgba(255, 255, 255, .75);
+        background-color: #111;
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+    .sm li {
+        float: right;
+        margin-left: 1rem;
+    }
+
+    .sm li:first-child {
+        float: left;
+        margin-left: 0;
+    }
+
+    .sm .googleplus-one {
+        max-width: 60px;
+    }
+
+    .sm .twitter-follow>*:not( :first-child),
+    .sm .twitter-share>*:not( :first-child) {
+        display: none;
+    }
+
+    @media screen {
+        @media (min-width: 0px)
+
+        /* everything but Internet Explorer and Safari ≤6 */
+            {
+            .sm li:last-child {
+                opacity: 0;
+                -webkit-transition: opacity .25s ease-in-out;
+                transition: opacity .25s ease-in-out;
+            }
+
+            .sm:hover li:last-child {
+                opacity: 1;
+            }
+        }
+    }
+
+    .sm__back {
+        font-size: 0.875rem;
+        /* 14 */
+        font-weight: bold;
+        color: currentColor;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .sm__back::before {
+        width: 0;
+        height: 0;
+        border: 0.313rem solid transparent;
+        /* 5 */
+        border-left: none;
+        border-right-color: currentColor;
+        content: '';
+        display: inline-block;
+        position: relative;
+        left: 0;
+        margin-right: 0.313rem;
+        /* 5 */
+
+        -webkit-transition: left .25s ease-in-out;
+        transition: left .25s ease-in-out;
+    }
+
+    .sm__back:hover::before,
+    .sm__back:focus::before {
+        left: -0.313rem;
+        /* 5 */
+    }
+
+    .input-container {
+        padding-top: 10px;
+        margin: 0 auto;
+        display: block;
+        padding-bottom: 5px;
+        background-color: #edf8f5;
+    }
+
+    .faq-list {
+        padding-top: 1%;
+        padding-left: 12%;
+        padding-right: 12%;
+        margin: 0 auto;
+    }
+
+    ul.faq-list li {
+        list-style-type: none;
+    }
+
+    a:-webkit-any-link {
+        text-decoration: none;
+        color: unset;
+    }
+
+    a:-webkit-any-link:hover {
+        color: unset;
+        border: unset;
+    }
+
+    button:-webkit-any-link:hover {
+        color: unset;
+        border: unset;
+        border-color: unset;
+    }
+
+    /*
+RESPONSIVENESS
+*/
+    .permanent-faq-container {
+        background-color: #f5f5f5;
+        margin-top: 50px;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .content-container {
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .help-container {
+        margin: auto;
+        padding-top: 10px;
+        padding-left: 11%;
+        padding-right: 12%;
+    }
+
+    @media screen and (max-width: 40em),
+    screen and (max-height: 40em)
+
+    /* 640 */
+        {
+        .sm {
+            display: none;
+        }
+    }
+
+    .is-warning.is-active {
+        background-color: #f1f1f1
+    }
+
+    .is-warning.is-active {
+        background-color: #f1f1f1
+    }
+
+    .button-content.is-primary.is-fullwidth.is-medium,
+    .button-content.is-primary.is-fullwidth.is-medium:hover {
+        font-weight: 300;
+        font-family: "Open Sans";
+        cursor: pointer;
+        padding-bottom: calc(.375em - 1px);
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        padding-top: calc(.375em - 1px);
+        border-radius: unset;
+        text-align: center;
+        white-space: nowrap;
+        border-right: none;
+        border-top: none;
+        border-left: none;
+        border-bottom: 1px solid #3b4d63;
+    }
+
+    .button-content,
+    .button-content:hover {
+        font-weight: 300;
+        font-family: "Open Sans";
+        cursor: pointer;
+        padding-bottom: calc(.375em - 1px);
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        padding-top: calc(.375em - 1px);
+        border-radius: unset;
+        text-align: center;
+        white-space: nowrap;
+        border-right: none;
+        border-top: none;
+        border-left: none;
+        border-bottom: 1px solid #3b4d63;
+    }
+
+    .button-content .fa,
+    .button-content .far,
+    button .fas {
+        min-width: 30px;
+        text-align: left;
+        padding-right: 3%;
+    }
+
+    .button-content.child-opener {
+        background-color: #edf8f5;
+        border-color: #dcebed;
+        color: #363636;
+        height: 60px !important;
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    .button-content.is-fullwidth {
+        display: flex;
+        width: 100%;
+        height: 50px;
+    }
+
+    button.button-content.child-opener::before {
+        font-family: "luma-icons";
+        font-weight: 300;
+        content: "\e622";
+        margin-right: 3.5%;
+        color: #4ec425;
+    }
+
+    button.button-content.child-opener.is-active::before {
+        content: "\e621";
+    }
+
+    .button-content.is-info.is-active {
+        background-color: #dcebed;
+    }
+
+    .title {
+        color: #363636;
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.125;
+    }
+
+    .title.is-1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .child-opener {
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    .box {
+        background: #f2f2f2;
+        color: #4a4a4a;
+        display: block;
+    }
+
+    .code-sample {
+        background-color: #333;
+        margin-bottom: 2em;
+        border-radius: 4px;
+    }
+
+    .tab-button.is-active {
+        pointer-events: none;
+        ;
+    }
+
+    .tab-content .box {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 0.5s;
+    }
+
+    .tab-content.is-active .box {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    .button-content.is-primary.is-active,
+    .button-content.is-primary:active {
+        background-color: #1b242f;
+        color: #fff;
+    }
+
+    .button-content.is-primary.is-active::after {
+        font-family: "luma-icons";
+        font-weight: 400;
+        content: "\e616";
+        position: absolute;
+        right: 15%;
+        color: #fff;
+        z-index: 999;
+        padding-top: 4px;
+    }
+
+    .second-step-header::after {
+        font-family: "luma-icons";
+        font-weight: 300;
+        content: "\e616";
+        position: absolute;
+        right: 15%;
+        z-index: 999;
+        padding-top: 4px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .child-opener.is-active::after {
+        font-family: "luma-icons";
+        font-weight: 400;
+        content: "\e616";
+        position: absolute;
+        right: 15%;
+        z-index: 999;
+        padding-top: 4px;
+    }
+
+    .button-content.is-primary {
+        background-color: #273443;
+        color: #fff;
+        height: 80px;
+        font-weight: 300;
+        font-size: 20px;
+    }
+
+    .help-container {
+        margin-bottom: 25px;
+    }
+
+    .contact-button {
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 1.1px;
+        color: #ffffff;
+        margin: 10px 10px;
+        padding: 10px 35px;
+        border-radius: 4px;
+        background-color: #228600;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .content-details-text {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    .box>p {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+
+    /* scroll related styles */
+    .scrolltop {
+        display: none;
+        width: 100%;
+        margin: 0 auto;
+        position: fixed;
+        bottom: 20px;
+        right: 10px;
+    }
+
+    .scroll {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        background: #b2b2b2;
+        background: rgba(178, 178, 178, 0.7);
+        padding: 25px 27px;
+        text-align: center;
+        margin: 0 0 0 0;
+        cursor: pointer;
+        transition: 0.5s;
+        -moz-transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -o-transition: 0.5s;
+        border-radius: 50%;
+    }
+
+    .scroll:hover {
+        background: rgba(178, 178, 178, 1.0);
+        transition: 0.5s;
+        -moz-transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -o-transition: 0.5s;
+    }
+
+    .scroll:hover .fa {
+        padding-top: -10px;
+    }
+
+
+    .scroll.icon::before {
+        font-family: "luma-icons";
+        font-weight: 700;
+        content: "\e621";
+        font-size: 20px;
+    }
+
+    .second-section-h1 {
+        padding-left: 2%;
+        font-size: 26px;
+        padding-top: 30px;
+    }
+
+    p.top-faq-p {
+        padding-left: 4%;
+    }
+
+    .search-section-form {
+        padding-top: 15px;
+        padding-left: 12%;
+        padding-right: 12%;
+
+    }
+
+    .first-section-h1 {
+        padding-left: 11%;
+        padding-right: 11%;
+    }
+
+    .email-contact-button {
+        font-family: "Open Sans";
+        font-weight: 400;
+        font-size: 18px;
+        max-width: 50%;
+        min-width: 30%;
+        margin: 10px 10px;
+    }
+
+    .help-container-header {
+        font-size: 26px;
+        font-weight: 300;
+        line-height: 1.1;
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+
+    @media screen and (max-width:900px) {
+
+        .email-contact-button {
+            display:block;
+            clear:right;
+            min-width:90%;
+            max-width:unset;
+        }
+
+
+        .permanent-faq-container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .faq-list {
+            padding-top: 1%;
+            padding-left: 2%;
+            padding-right: 2%;
+            margin: 0 auto;
+        }
+
+        .search-section-form {
+            padding-top: 15px;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+
+        .first-section-h1 {
+            padding-left: 2%;
+            padding-right: 2%;
+            font-size: 40px;
+        }
+
+        .help-container {
+            margin: auto;
+            padding-top: 10px;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+
+        .button-content.is-primary.is-active::after {
+            right: 5%;
+        }
+
+        .child-opener.is-active::after {
+            right: 5%;
+        }
+
+        .second-step-header::after {
+            right: 5%;
+        }
+    }
+</style>
